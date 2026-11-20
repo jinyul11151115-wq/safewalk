@@ -110,16 +110,17 @@ export function WalkModePanel({
     return () => window.speechSynthesis.removeEventListener('voiceschanged', loadKoreanVoice)
   }, [])
 
-  function speak(text: string, priority = false) {
+  function speak(text: string) {
     const synthesis = typeof window !== 'undefined' ? window.speechSynthesis : undefined
     if (!synthesis || typeof synthesis.speak !== 'function' || typeof SpeechSynthesisUtterance === 'undefined') {
       setSpeechState('blocked')
-      setSpeechIssue('현재 열린 앱 내 브라우저가 음성 합성을 지원하지 않습니다. 주소를 Android Chrome 또는 iPhone Safari에서 직접 여세요. TalkBack·VoiceOver를 켜면 화면 안내를 들을 수 있습니다.')
+      setSpeechIssue('현재 열린 앱 내 브라우저에서 음성 합성을 사용할 수 없습니다. 링크를 Chrome 또는 삼성 인터넷에서 직접 여세요. 삼성폰은 설정 > 일반 관리 > 글자 읽어주기에서 음성 엔진을 선택하고 한국어 음성을 설치해 주세요.')
       setScreenReaderAnnouncement(text)
       return
     }
     const attempt = ++speechAttemptRef.current
-    if (priority) synthesis.cancel()
+    synthesis.cancel()
+    synthesis.resume()
     setSpeechState('starting')
     setSpeechIssue('')
     setScreenReaderAnnouncement('')
@@ -127,7 +128,8 @@ export function WalkModePanel({
     utterance.lang = 'ko-KR'
     utterance.rate = voiceRate
     utterance.volume = 1
-    if (koreanVoiceRef.current) utterance.voice = koreanVoiceRef.current
+    const koreanVoice = synthesis.getVoices().find((voice) => /^ko([-_]|$)/i.test(voice.lang)) ?? koreanVoiceRef.current
+    if (koreanVoice) utterance.voice = koreanVoice
     utterance.onstart = () => {
       speechStartedAttemptRef.current = attempt
       if (speechAttemptRef.current === attempt) setSpeechState('playing')
@@ -138,7 +140,10 @@ export function WalkModePanel({
     utterance.onerror = (event) => {
       if (speechAttemptRef.current !== attempt || event.error === 'canceled' || event.error === 'interrupted') return
       setSpeechState('blocked')
-      setSpeechIssue('기기 음성 엔진이 재생을 시작하지 못했어요. 소리 다시 확인을 누르거나 TalkBack·VoiceOver를 켜 주세요.')
+      const engineHelp = /Android/i.test(navigator.userAgent)
+        ? '삼성폰: 설정 > 일반 관리 > 글자 읽어주기에서 기본 엔진을 Samsung TTS 또는 Speech Services by Google로 선택하고, 한국어 음성 데이터를 설치한 뒤 미디어 음량을 확인해 주세요.'
+        : '기기의 음성 엔진과 미디어 음량을 확인한 뒤 다시 시도해 주세요.'
+      setSpeechIssue(`음성 엔진 오류(${event.error}). ${engineHelp}`)
       setScreenReaderAnnouncement(text)
     }
     try {
@@ -208,7 +213,7 @@ export function WalkModePanel({
     }
     const nextStep = route.steps[0]
     if (!nextStep) return
-    speak(nextStep.instruction, true)
+    speak(nextStep.instruction)
     setSimulationResult(`${route.source}: ${nextStep.instruction}`)
   }
 
@@ -216,7 +221,7 @@ export function WalkModePanel({
     if (questionRef.current || !movingRef.current) return
     questionRef.current = hazard
     setQuestionHazard(hazard)
-    speak('방금 지나온 위험 구간이 아직 있었나요? 신고하시겠어요?', true)
+    speak('방금 지나온 위험 구간이 아직 있었나요? 신고하시겠어요?')
     updateLatestAlertLog(hazard.id, { asked_to_report: true })
   }
 
@@ -257,7 +262,7 @@ export function WalkModePanel({
       : `${hazardSpeech(hazard, userType, distance, { inFront, accurate })} 확인된 우회로가 없습니다.`
     setWarning({ hazard, message })
     playWarningSound()
-    speak(message, true)
+    speak(message)
     if ('vibrate' in navigator) navigator.vibrate([180, 100, 180])
     if (simulationActiveRef.current) {
       setSimulationWarningCount((count) => count + 1)
@@ -413,7 +418,7 @@ export function WalkModePanel({
       ({ coords }) => {
         const wasPaused = appPausedRef.current
         appPausedRef.current = false
-        if (wasPaused) speak('위치를 다시 확인했습니다. 보행 안내를 재개합니다.', true)
+        if (wasPaused) speak('위치를 다시 확인했습니다. 보행 안내를 재개합니다.')
         processPositionRef.current({
           lat: coords.latitude,
           lng: coords.longitude,
@@ -518,15 +523,19 @@ export function WalkModePanel({
     else {
       const message = '이 근처에 위험 제보가 있습니다. 확인된 우회로가 없습니다.'
       setWarning({ hazard, message })
-      speak(message, true)
+      speak(message)
       setSimulationResult('우회로 없음 시나리오: 임의 방향을 말하지 않고 경고합니다.')
     }
   }
 
   function retrySound() {
     unlockAudioFromGesture()
-    if ('speechSynthesis' in window) window.speechSynthesis.resume()
-    speak('음성 안내를 켰습니다. 현재 위치를 확인합니다.', true)
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+      window.speechSynthesis.resume()
+      koreanVoiceRef.current = window.speechSynthesis.getVoices().find((voice) => /^ko([-_]|$)/i.test(voice.lang)) ?? null
+    }
+    speak('음성 안내를 켰습니다. 현재 위치를 확인합니다.')
   }
 
   useEffect(() => {
@@ -610,7 +619,7 @@ export function WalkModePanel({
         ({ coords }) => {
           const wasPaused = appPausedRef.current
           appPausedRef.current = false
-          if (wasPaused) speak('위치를 다시 확인했습니다. 보행 안내를 재개합니다.', true)
+          if (wasPaused) speak('위치를 다시 확인했습니다. 보행 안내를 재개합니다.')
           processPositionRef.current({ lat: coords.latitude, lng: coords.longitude, accuracy: coords.accuracy, speed: coords.speed, heading: coords.heading })
         },
         () => {
@@ -662,7 +671,7 @@ export function WalkModePanel({
           <span className="warning-icon"><AlertTriangle size={31} /></span>
           <p className="warning-hazard-name">{warning.hazard.type} 위험</p>
           <h2 aria-live="assertive" aria-atomic="true">{warning.message}</h2>
-          <button type="button" aria-label="경고 음성 다시 듣기" onClick={() => speak(warning.message, true)}><Volume2 size={19} />다시 듣기</button>
+          <button type="button" aria-label="경고 음성 다시 듣기" onClick={() => speak(warning.message)}><Volume2 size={19} />다시 듣기</button>
         </div> : <div className="walk-scanning"><span className="scan-rings"><Navigation size={30} /></span><strong>{positionInaccurate ? '위치 오차가 커서 거리를 단정하지 않아요' : '주변 위험을 확인하고 있어요.'}</strong><span>{simulationActive ? `모의 위치 ${simulationDistance}m · 알림 거리 ${simulationRadius}m` : '위치와 이동 이력은 이 기기에서만 처리해요'}</span></div>}
         {(simulationActive || (testMode && moving)) && <div className="walk-simulation-controls" role="group" aria-label="모의 보행 테스트 단계">
           <strong>모의 테스트 결과</strong><p role="status" aria-live="polite">{simulationResult}</p>
