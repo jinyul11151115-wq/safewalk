@@ -355,6 +355,11 @@ summary { min-height: 48px; }
 }
 
 @media (max-width: 850px) {
-  .workspace.report-mode { grid-template-rows: minmax(0, 1fr) 112px; }
+  .workspace.report-mode { grid-template-rows: minmax(0, 1fr) var(--report-map-height, 112px); }
   .report-mode .map-workspace { min-height: 112px; }
+  .report-map-resizer { position: absolute; z-index: 12; top: 0; right: 0; left: 0; display: grid; height: 42px; place-items: center; touch-action: none; cursor: ns-resize; background: linear-gradient(#10201835, transparent); }
+  .report-map-resizer > span { width: 54px; height: 6px; border: 1px solid #ffffffd9; border-radius: 99px; background: #284b37; box-shadow: 0 1px 5px #101a1466; }
+  .report-map-resizer:focus-visible { outline: 3px solid #a54800; outline-offset: -3px; }
 }
+
+@media (min-width: 851px) { .report-map-resizer { display: none; } }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import {
   Accessibility, AlertTriangle, ArrowRight, Check, Copy, FileClock,
   Footprints, Info, MapPin, Search, Settings2, ShieldCheck, Volume2, X,
@@ -52,6 +52,7 @@ function App() {
   const [visibleIds, setVisibleIds] = useState<string[] | null>(null)
   const [reportLocation, setReportLocation] = useState<Coordinates | null>({ lat: 36.3504, lng: 127.3845 })
   const [reportStep, setReportStep] = useState(1)
+  const [reportMapHeight, setReportMapHeight] = useState(112)
   const [positionAdjusted, setPositionAdjusted] = useState(false)
   const [demoLoggedIn, setDemoLoggedIn] = useState(() => Boolean(localStorage.getItem('safe-walk-demo-user')))
   const [toast, setToast] = useState('')
@@ -217,6 +218,30 @@ function App() {
     setReportLocation(coordinates)
     setPositionAdjusted(true)
   }, [])
+
+  function setReportMapHeightFromPointer(event: ReactPointerEvent<HTMLDivElement>) {
+    const workspace = event.currentTarget.closest('.workspace.report-mode')
+    if (!workspace) return
+    const bounds = workspace.getBoundingClientRect()
+    const maximum = Math.min(window.innerHeight * 0.48, bounds.height * 0.55)
+    setReportMapHeight(Math.max(112, Math.min(maximum, bounds.bottom - event.clientY)))
+  }
+
+  function handleReportMapResizeKey(event: ReactKeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowRight') {
+      event.preventDefault()
+      setReportMapHeight((height) => Math.min(Math.min(window.innerHeight * 0.48, window.innerHeight * 0.55), height + 32))
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowLeft') {
+      event.preventDefault()
+      setReportMapHeight((height) => Math.max(112, height - 32))
+    } else if (event.key === 'Home') {
+      event.preventDefault()
+      setReportMapHeight(112)
+    } else if (event.key === 'End') {
+      event.preventDefault()
+      setReportMapHeight(Math.min(window.innerHeight * 0.48, window.innerHeight * 0.55))
+    }
+  }
 
   const handleHazardsChange = useCallback((nextHazards: Hazard[]) => {
     setHazards(nextHazards)
@@ -457,7 +482,7 @@ function App() {
 
       {moving && <div className="wake-warning-banner" role="note">화면 잠금·앱 전환 중 위치 안내가 멈출 수 있어요. 돌아오면 새 위치를 확인한 뒤 다시 안내합니다.</div>}
 
-      <div className={`workspace ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`}>
+      <div className={`workspace ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`} style={activeTab === 'report' ? { '--report-map-height': `${reportMapHeight}px` } as CSSProperties : undefined}>
         <aside className={`side-panel ${activeTab === 'report' ? 'report-side-panel' : ''} ${activeTab === 'safety' ? 'safety-side-panel' : ''} ${activeTab === 'my-reports' ? 'my-reports-side-panel' : ''} ${activeTab === 'walk' ? 'walk-side-panel' : ''}`} aria-label="안심보행 탭 내용">
           <div className={`map-side-content ${activeTab === 'map' ? 'tab-content-active' : ''}`}>
             <div className="panel-heading">
@@ -536,6 +561,24 @@ function App() {
         </aside>
 
         <div className={`map-workspace ${activeTab === 'report' || activeTab === 'safety' ? 'mini-map-workspace' : ''}`}>
+          {activeTab === 'report' && <div
+            className="report-map-resizer"
+            role="separator"
+            aria-orientation="horizontal"
+            aria-label="지도 높이 조절. 위쪽 화살표로 키우고 아래쪽 화살표로 줄이세요."
+            aria-valuemin={112}
+            aria-valuemax={Math.round(Math.min(window.innerHeight * 0.48, window.innerHeight * 0.55))}
+            aria-valuenow={Math.round(reportMapHeight)}
+            tabIndex={0}
+            onPointerDown={(event) => {
+              event.currentTarget.setPointerCapture(event.pointerId)
+              setReportMapHeightFromPointer(event)
+            }}
+            onPointerMove={(event) => { if (event.currentTarget.hasPointerCapture(event.pointerId)) setReportMapHeightFromPointer(event) }}
+            onPointerUp={(event) => { if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId) }}
+            onPointerCancel={(event) => { if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId) }}
+            onKeyDown={handleReportMapResizeKey}
+          ><span aria-hidden="true" /></div>}
           <MapPanel
             hazards={hazards}
             visibleIds={visibleIds}
