@@ -10,7 +10,7 @@ import { publishHazardReport, sharedReportsEnabled } from '../map/sharedReports'
 type PhotoSlot = 'wide' | 'close'
 export type PhotoDraft = { id: string; name: string; dataUrl: string; width: number; height: number }
 type PersonalReport = HazardReport & { hazardTitle: string; userEmail: string }
-type CompletedReport = { report: PersonalReport; merged: boolean }
+type CompletedReport = { report: PersonalReport; merged: boolean; shared: boolean }
 
 const REPORTS_KEY = 'safe-walk-demo-my-reports-v1'
 const steps = ['위치', '사진', '유형', '통행', '심각도', '확인']
@@ -105,6 +105,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
   const [photoBusy, setPhotoBusy] = useState<PhotoSlot | null>(null)
   const [error, setError] = useState('')
   const [completed, setCompleted] = useState<CompletedReport | null>(null)
+  const [sharingWarning, setSharingWarning] = useState('')
   const [reports, setReports] = useState<PersonalReport[]>(loadReports)
   const wizardStepRef = useRef<HTMLDivElement>(null)
   const myReports = reports.filter((report) => report.userEmail === userEmail || report.userEmail === '기기 사용자')
@@ -198,7 +199,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
     const match = hazards.find((hazard) => /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(hazard.id) && hazard.type === selectedType && distanceMeters(reportLocation, hazard) <= 15)
     const reportHazardId = match?.id ?? crypto.randomUUID()
     try {
-      const region = match ? null : await resolveRegion(reportLocation)
+      const region = match ? null : await resolveRegion(reportLocation).catch(() => ({ region_name: '위치 주소 확인 필요', region_code: 'unknown' }))
       await saveDemoPhotos([photos.wide, photos.close])
       const report: PersonalReport = {
         id: reportId,
@@ -213,20 +214,28 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
         hazardTitle: match?.title ?? `${selectedType} 위험 지점`,
         userEmail,
       }
-      const sharedPhotoPaths = await publishHazardReport({
-        reportId,
-        hazardId: reportHazardId,
-        type: selectedType,
-        title: report.hazardTitle,
-        detail: memo.trim() || `${selectedType}으로 통행이 불편해요.`,
-        place: region?.region_name ?? match?.place ?? '위치 확인 필요',
-        lat: reportLocation.lat,
-        lng: reportLocation.lng,
-        passability: report.passability,
-        severity,
-        memo: memo.trim(),
-        photos: [photos.wide, photos.close],
-      })
+      let sharedPhotoPaths: string[] | null = null
+      let shared = false
+      try {
+        sharedPhotoPaths = await publishHazardReport({
+          reportId,
+          hazardId: reportHazardId,
+          type: selectedType,
+          title: report.hazardTitle,
+          detail: memo.trim() || `${selectedType}으로 통행이 불편해요.`,
+          place: region?.region_name ?? match?.place ?? '위치 확인 필요',
+          lat: reportLocation.lat,
+          lng: reportLocation.lng,
+          passability: report.passability,
+          severity,
+          memo: memo.trim(),
+          photos: [photos.wide, photos.close],
+        })
+        shared = Boolean(sharedPhotoPaths)
+      } catch (shareError) {
+        const reason = shareError instanceof Error ? shareError.message : '서버 연결에 실패했어요.'
+        setSharingWarning(`서버 공유에 실패해 이 기기에만 저장했어요. 다른 사람에게는 아직 보이지 않습니다. (${reason})`)
+      }
       let updated: Hazard[]
       if (match) {
         updated = hazards.map((hazard) => hazard.id !== match.id ? hazard : {
@@ -272,7 +281,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
         throw new Error('위험 지점을 저장하지 못했어요.')
       }
       onHazardsChange(updated)
-      setCompleted({ report, merged: Boolean(match) })
+      setCompleted({ report, merged: Boolean(match), shared })
       setView('complete')
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : '제보를 저장하지 못했어요.')
@@ -354,7 +363,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
         <div className="wizard-actions">{step > 1 ? <Button variant="secondary" aria-label="이전 단계" onClick={() => { setError(''); setStep((current) => current - 1) }}><ArrowLeft size={17} />이전</Button> : <Button variant="secondary" aria-label="지도 탭으로 돌아가기" onClick={onClose}><ArrowLeft size={17} />지도</Button>}{step < 6 ? <Button variant="primary" aria-label="다음 단계" onClick={nextStep}>다음 단계<ArrowRight size={17} /></Button> : <Button variant="primary" aria-label="확인하고 제보 등록" aria-live="polite" disabled={busy} onClick={submitReport}>{busy ? '저장 중...' : '확인하고 제보 등록'}<ArrowRight size={17} /></Button>}</div>
       </>}
 
-      {view === 'complete' && completed && <section className="report-complete" aria-live="polite"><div className="complete-icon"><Check size={31} /></div><p className="eyebrow">제보 완료</p><h2 tabIndex={-1}>{completed.merged ? <>이미 등록된 위험 지점에<br />제보가 더해졌어요.</> : '위험 정보를 등록했어요.'}</h2><p className="complete-description">{completed.report.hazardTitle}<br />{sharedReportsEnabled ? '위치·내용·사진을 공유 서버에 저장했어요.' : '이 브라우저에 임시 저장했어요. 공유 DB 연결이 필요해요.'}</p><div className="complete-state"><FileClock size={18} /><span>안전신문고 신고는 아직 대기 중이에요.</span></div><Button variant="primary" className="wide-button" aria-label="안전신문고로 신고하기" onClick={openSafetyReport}>안전신문고로 신고하기 <ChevronRight size={17} /></Button><Button variant="secondary" className="wide-button" aria-label="나중에 신고하고 내 제보 목록 보기" onClick={saveForLater}>나중에 신고하기 <ArrowRight size={17} /></Button><button className="wizard-back-link" aria-label="새 위험 제보 작성" onClick={resetWizard}>새 제보 작성</button></section>}
+      {view === 'complete' && completed && <section className="report-complete" aria-live="polite"><div className="complete-icon"><Check size={31} /></div><p className="eyebrow">제보 완료</p><h2 tabIndex={-1}>{completed.merged ? <>이미 등록된 위험 지점에<br />제보가 더해졌어요.</> : '위험 정보를 등록했어요.'}</h2><p className="complete-description">{completed.report.hazardTitle}<br />{completed.shared ? '위치·내용·사진을 공유 서버에 저장했어요.' : '이 기기에 저장했어요. 다른 사람에게는 아직 공유되지 않았습니다.'}</p>{!completed.shared && <p className="wizard-error" role="status">{sharingWarning || 'Supabase 서버 연결을 확인하지 못해 기기에만 저장했어요.'}</p>}<div className="complete-state"><FileClock size={18} /><span>안전신문고 신고는 아직 대기 중이에요.</span></div><Button variant="primary" className="wide-button" aria-label="안전신문고로 신고하기" onClick={openSafetyReport}>안전신문고로 신고하기 <ChevronRight size={17} /></Button><Button variant="secondary" className="wide-button" aria-label="나중에 신고하고 내 제보 목록 보기" onClick={saveForLater}>나중에 신고하기 <ArrowRight size={17} /></Button><button className="wizard-back-link" aria-label="새 위험 제보 작성" onClick={resetWizard}>새 제보 작성</button></section>}
     </section>
   )
 }
