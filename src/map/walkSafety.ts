@@ -40,22 +40,17 @@ function passableValue(hazard: Hazard, userType: WalkUserType): boolean | null {
 export function isHazardRelevant(hazard: Hazard, userType: WalkUserType) {
   if (hazard.status === 'fixed' || hazard.status === '처리완료') return false
   if (userType === '시각장애' || userType === '일반') return true
-  if (userType === '휠체어') return wheelchairHazardTypes.has(hazard.type) && passableValue(hazard, userType) === false
+  if (userType === '휠체어') {
+    const impossible = hazard.passability
+      ? hazard.passability.wheelchair === '불가능'
+      : passableValue(hazard, userType) === false
+    return wheelchairHazardTypes.has(hazard.type) && impossible
+  }
   return passableValue(hazard, userType) === false
 }
 
-export function hazardSpeech(hazard: Hazard, userType: WalkUserType, distance: number) {
-  const roundedDistance = Math.max(10, Math.round(distance / 10) * 10)
-  const description: Record<HazardType, string> = {
-    '가로수 뿌리': '나무뿌리로 보도가 울퉁불퉁한 구간입니다',
-    '보도블록 파손': '보도블록이 깨진 구간입니다',
-    '단차·턱': '보도에 단차가 있는 구간입니다',
-    '급경사': '경사가 가파른 구간입니다',
-    '좁은 보도': '보도가 좁은 구간입니다',
-    '공사 장애물': '공사 장애물이 있는 구간입니다',
-    '맨홀·배수구': '맨홀이나 배수구가 있는 구간입니다',
-    '미끄러운 노면': '바닥이 미끄러운 구간입니다',
-  }
+export function hazardSpeech(hazard: Hazard, userType: WalkUserType, distance: number, options: { inFront?: boolean; accurate?: boolean } = {}) {
+  const roundedDistance = Math.max(10, Math.floor((distance + 0.5) / 10 + 0.5) * 10)
   const passText = userType === '휠체어'
     ? hazard.passability?.wheelchair ?? ((hazard.passable_wheelchair ?? hazard.wheelchair) ? '지나갈 수 있음' : '어려움')
     : userType === '고령자·유모차'
@@ -70,5 +65,11 @@ export function hazardSpeech(hazard: Hazard, userType: WalkUserType, distance: n
         : userType === '시각장애'
           ? '지팡이나 안내견으로 바닥을 확인해 주세요.'
           : '주변을 살펴 천천히 이동해 주세요.'
-  return `주의. 약 ${roundedDistance}미터 앞, ${description[hazard.type]}. ${detail}`
+  const distanceText = options.accurate === false
+    ? '주변에'
+    : options.inFront
+      ? `약 ${roundedDistance}미터 앞,`
+      : `주변 약 ${roundedDistance}미터에`
+  const title = hazard.title || `${hazard.type} 위험`
+  return `${distanceText} ${title} 제보가 있습니다. ${detail}`
 }

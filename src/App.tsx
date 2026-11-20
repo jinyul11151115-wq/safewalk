@@ -455,7 +455,7 @@ function App() {
         <button aria-current={activeTab === 'my-reports' ? 'page' : undefined} className={activeTab === 'my-reports' ? 'active' : ''} aria-label="내 신고 목록으로 이동" disabled={moving} onClick={() => setActiveTab('my-reports')}><FileClock size={17} />내 신고</button>
       </nav>
 
-      {moving && <div className="wake-warning-banner" role="note">화면이 꺼지면 경고가 멈춥니다</div>}
+      {moving && <div className="wake-warning-banner" role="note">화면 잠금·앱 전환 중 위치 안내가 멈출 수 있어요. 돌아오면 새 위치를 확인한 뒤 다시 안내합니다.</div>}
 
       <div className={`workspace ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`}>
         <aside className={`side-panel ${activeTab === 'report' ? 'report-side-panel' : ''} ${activeTab === 'safety' ? 'safety-side-panel' : ''} ${activeTab === 'my-reports' ? 'my-reports-side-panel' : ''} ${activeTab === 'walk' ? 'walk-side-panel' : ''}`} aria-label="안심보행 탭 내용">

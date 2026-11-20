@@ -335,3 +335,20 @@ summary { min-height: 48px; }
   :root:not([data-theme="light"]) .app-error-fallback section { border-color: #46564a; background: #202a23; }
   :root:not([data-theme="light"]) .app-error-fallback p, :root:not([data-theme="light"]) .app-error-fallback small { color: #d1dbd3; }
 }
+
+.walk-sound-check { display: flex; width: 100%; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 9px; margin-top: 10px; padding: 11px 13px; border: 1px solid #dce5dc; border-radius: 10px; background: #f8faf7; color: #405147; font-size: 13px; text-align: left; }
+.walk-sound-check p { flex-basis: 100%; margin: 0; line-height: 1.5; }
+.walk-location-error { width: 100%; margin: 9px 0; padding: 11px 13px; border: 1px solid #e5c5b8; border-radius: 9px; background: #fff5ef; color: #863d2c; font-size: 13px; line-height: 1.55; text-align: left; }
+.simulation-route-toggle { display: flex; width: 100%; min-height: 48px; align-items: center; gap: 9px; margin: 14px 0 8px; color: #44544a; font-size: 12px; text-align: left; }
+.simulation-route-toggle input { width: 21px; height: 21px; flex: 0 0 auto; accent-color: #176848; }
+.walk-simulation-controls { display: grid; width: 100%; gap: 8px; margin: 4px 0 12px; padding: 12px; border: 1px solid #cbdaca; border-radius: 12px; background: #f2f7f1; }
+.walk-simulation-controls > strong { color: #24593c; font-size: 13px; }
+.walk-simulation-controls > p { margin: 0; color: #3d4d42; font-size: 12px; line-height: 1.55; }
+.walk-simulation-controls .button { min-height: 48px; }
+.walk-stop-button { width: 100%; min-height: 58px; margin-top: 10px; justify-content: center; font-weight: 800; }
+:root[data-theme="dark"] .walk-sound-check, :root[data-theme="dark"] .walk-simulation-controls { border-color: #4b5b4f; background: #26332a; color: #edf3ee; }
+:root[data-theme="dark"] .walk-simulation-controls > strong, :root[data-theme="dark"] .walk-simulation-controls > p, :root[data-theme="dark"] .walk-sound-check { color: #edf3ee; }
+@media (max-width: 850px) {
+  .walk-simulation-controls { flex: 0 0 auto; }
+  .walk-stop-button { flex: 0 0 auto; }
+}
