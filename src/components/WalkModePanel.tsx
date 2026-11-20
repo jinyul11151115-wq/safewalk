@@ -66,6 +66,7 @@ export function WalkModePanel({
   const [locationIssue, setLocationIssue] = useState('')
   const [speechState, setSpeechState] = useState<'idle' | 'starting' | 'playing' | 'ready' | 'blocked'>('idle')
   const [speechIssue, setSpeechIssue] = useState('')
+  const [screenReaderAnnouncement, setScreenReaderAnnouncement] = useState('')
   const [simulationActive, setSimulationActive] = useState(false)
   const [simulationRoute, setSimulationRoute] = useState(true)
   const [simulationDistance, setSimulationDistance] = useState(60)
@@ -90,6 +91,7 @@ export function WalkModePanel({
   const simulationHazardRef = useRef<Hazard | null>(null)
   const speechAttemptRef = useRef(0)
   const speechStartedAttemptRef = useRef(0)
+  const koreanVoiceRef = useRef<SpeechSynthesisVoice | null>(null)
   const processPositionRef = useRef<(sample: GeolocationSample) => void>(() => {})
   const answerQuestionRef = useRef<(answer: 'yes' | 'fixed' | 'later') => void>(() => {})
 
@@ -97,19 +99,35 @@ export function WalkModePanel({
   simulationActiveRef.current = simulationActive
   simulationRouteRef.current = simulationRoute
 
+  useEffect(() => {
+    if (!('speechSynthesis' in window)) return
+    const loadKoreanVoice = () => {
+      const voices = window.speechSynthesis.getVoices()
+      koreanVoiceRef.current = voices.find((voice) => /^ko([-_]|$)/i.test(voice.lang)) ?? null
+    }
+    loadKoreanVoice()
+    window.speechSynthesis.addEventListener('voiceschanged', loadKoreanVoice)
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', loadKoreanVoice)
+  }, [])
+
   function speak(text: string, priority = false) {
-    if (!('speechSynthesis' in window)) {
+    const synthesis = typeof window !== 'undefined' ? window.speechSynthesis : undefined
+    if (!synthesis || typeof synthesis.speak !== 'function' || typeof SpeechSynthesisUtterance === 'undefined') {
       setSpeechState('blocked')
-      setSpeechIssue('이 브라우저에서 음성 재생 기능을 사용할 수 없습니다.')
+      setSpeechIssue('현재 열린 앱 내 브라우저가 음성 합성을 지원하지 않습니다. 주소를 Android Chrome 또는 iPhone Safari에서 직접 여세요. TalkBack·VoiceOver를 켜면 화면 안내를 들을 수 있습니다.')
+      setScreenReaderAnnouncement(text)
       return
     }
     const attempt = ++speechAttemptRef.current
-    if (priority) window.speechSynthesis.cancel()
+    if (priority) synthesis.cancel()
     setSpeechState('starting')
     setSpeechIssue('')
+    setScreenReaderAnnouncement('')
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.lang = 'ko-KR'
     utterance.rate = voiceRate
+    utterance.volume = 1
+    if (koreanVoiceRef.current) utterance.voice = koreanVoiceRef.current
     utterance.onstart = () => {
       speechStartedAttemptRef.current = attempt
       if (speechAttemptRef.current === attempt) setSpeechState('playing')
@@ -120,10 +138,11 @@ export function WalkModePanel({
     utterance.onerror = (event) => {
       if (speechAttemptRef.current !== attempt || event.error === 'canceled' || event.error === 'interrupted') return
       setSpeechState('blocked')
-      setSpeechIssue('음성을 재생하지 못했어요. 기기 음량과 브라우저 소리 설정을 확인해 주세요.')
+      setSpeechIssue('기기 음성 엔진이 재생을 시작하지 못했어요. 소리 다시 확인을 누르거나 TalkBack·VoiceOver를 켜 주세요.')
+      setScreenReaderAnnouncement(text)
     }
     try {
-      window.speechSynthesis.speak(utterance)
+      synthesis.speak(utterance)
     } catch {
       setSpeechState('blocked')
       setSpeechIssue('브라우저가 음성 재생을 막았어요. [소리 다시 확인]을 눌러 주세요.')
@@ -133,6 +152,7 @@ export function WalkModePanel({
       if (speechAttemptRef.current === attempt && speechStartedAttemptRef.current !== attempt) {
         setSpeechState('blocked')
         setSpeechIssue('음성이 시작되지 않았어요. [소리 다시 확인]을 눌러 주세요.')
+        setScreenReaderAnnouncement(text)
       }
     }, 3500)
   }
@@ -322,7 +342,6 @@ export function WalkModePanel({
   }
 
   function resetSessionState() {
-    window.speechSynthesis?.cancel()
     if (stationaryTimerRef.current !== null) window.clearTimeout(stationaryTimerRef.current)
     stationaryTimerRef.current = null
     stationarySinceRef.current = null
@@ -384,9 +403,9 @@ export function WalkModePanel({
     if (!navigator.geolocation) {
       const message = '이 기기에서 위치 기능을 사용할 수 없습니다. 브라우저 위치 지원을 확인해 주세요.'
       setLocationIssue(message)
+      setScreenReaderAnnouncement(message)
       setGpsLabel('위치 기능을 사용할 수 없음')
-      stopWalk()
-      speak(message, true)
+      stopWalk(true)
       return
     }
     clearWatch()
@@ -410,10 +429,10 @@ export function WalkModePanel({
             ? '위치 확인 시간이 초과됐어요. GPS가 잘 잡히는 곳에서 다시 시도해 주세요.'
             : '현재 위치를 확인할 수 없어요. 기기 위치 서비스와 브라우저 권한을 확인해 주세요.'
         setLocationIssue(message)
+        setScreenReaderAnnouncement(message)
         setGpsLabel('위치 확인 실패')
         onToast(message)
-        stopWalk()
-        speak(message, true)
+        stopWalk(true)
       },
       { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 },
     )
@@ -427,20 +446,22 @@ export function WalkModePanel({
     beginWalk(true)
   }
 
-  function stopWalk() {
+  function stopWalk(preserveSpeech = false) {
     movingRef.current = false
     onMovingChange(false)
     clearWatch()
     releaseWakeLock()
-    ++speechAttemptRef.current
-    window.speechSynthesis?.cancel()
+    if (!preserveSpeech) {
+      ++speechAttemptRef.current
+      window.speechSynthesis?.cancel()
+    }
     if (stationaryTimerRef.current !== null) window.clearTimeout(stationaryTimerRef.current)
     stationaryTimerRef.current = null
     stationarySinceRef.current = null
     appPausedRef.current = false
     setSimulationActive(false)
     simulationActiveRef.current = false
-    setSpeechState('idle')
+    if (!preserveSpeech) setSpeechState('idle')
   }
 
   function answerQuestion(answer: 'yes' | 'fixed' | 'later') {
@@ -504,6 +525,7 @@ export function WalkModePanel({
 
   function retrySound() {
     unlockAudioFromGesture()
+    if ('speechSynthesis' in window) window.speechSynthesis.resume()
     speak('음성 안내를 켰습니다. 현재 위치를 확인합니다.', true)
   }
 
@@ -625,6 +647,7 @@ export function WalkModePanel({
           {speechState === 'blocked' && <Button variant="secondary" aria-label="소리 다시 확인" onClick={retrySound}><Volume2 size={18} />소리 다시 확인</Button>}
           {locationIssue && <p className="walk-location-error">{locationIssue}</p>}
         </div>
+        <span className="walk-screen-reader-only" role="status" aria-live="assertive" aria-atomic="true">{screenReaderAnnouncement}</span>
         <label className="simulation-route-toggle"><input type="checkbox" checked={simulationRoute} onChange={(event) => setSimulationRoute(event.target.checked)} /><span>모의 테스트에 테스트 전용 가상 우회로 포함</span></label>
         <Button variant="secondary" className="wide-button" aria-label="모의 보행 테스트 시작" onClick={startSimulation}>모의 보행 테스트 · 알림 거리 30m</Button>
         <p className="walk-privacy"><ShieldAlert size={16} />위치와 이동 이력은 기기 안에서만 처리해요.</p>
@@ -632,6 +655,7 @@ export function WalkModePanel({
         <div className="walk-live-heading"><span className="live-dot" />{simulationActive ? '모의 보행 테스트 중' : '보행 안내 중'}</div>
         <div className={`walk-location-status ${positionInaccurate ? 'inaccurate' : ''}`} role="status" aria-live="polite"><MapPin size={19} /><span>{gpsLabel}</span></div>
         {locationIssue && <p className="walk-location-error" role="alert">{locationIssue}</p>}
+        <span className="walk-screen-reader-only" role="status" aria-live="assertive" aria-atomic="true">{screenReaderAnnouncement}</span>
         {wakeLockUnavailable && <p className="wake-lock-help" role="status" aria-live="polite">화면 잠금이나 앱 전환 중에는 위치 갱신이 멈출 수 있어요. 앱으로 돌아오면 새 위치를 받은 뒤 안내를 재개합니다. 가능하면 화면을 켠 상태로 사용해 주세요.</p>}
         {speechState === 'blocked' && <div className="walk-sound-check" role="alert"><p>{speechIssue}</p><Button variant="secondary" aria-label="소리 다시 확인" onClick={retrySound}><Volume2 size={18} />소리 다시 확인</Button></div>}
         {warning ? <div className="walk-warning-card" role="region" aria-label="위험 경고">
@@ -655,7 +679,7 @@ export function WalkModePanel({
           <Button variant="secondary" aria-label="테스트 위치를 동쪽으로 10미터 이동" onClick={() => moveManualTestLocation('east')}><ArrowRight size={19} />동쪽 10m</Button>
           <Button variant="secondary" aria-label="테스트 위치를 남쪽으로 10미터 이동" onClick={() => moveManualTestLocation('south')}><ArrowDown size={19} />남쪽 10m</Button>
         </div>}
-        <Button variant="secondary" className="walk-stop-button" aria-label="보행 종료" onClick={stopWalk}><X size={19} />보행 종료</Button>
+        <Button variant="secondary" className="walk-stop-button" aria-label="보행 종료" onClick={() => stopWalk()}><X size={19} />보행 종료</Button>
       </div>}
     </section>
     {questionHazard && <div className="walk-question-backdrop"><section className="walk-question-sheet" role="dialog" aria-modal="true" aria-labelledby="passed-question-title" aria-describedby="passed-question-description">

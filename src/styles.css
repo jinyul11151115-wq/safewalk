@@ -346,6 +346,7 @@ summary { min-height: 48px; }
 .walk-simulation-controls > p { margin: 0; color: #3d4d42; font-size: 12px; line-height: 1.55; }
 .walk-simulation-controls .button { min-height: 48px; }
 .walk-stop-button { width: 100%; min-height: 58px; margin-top: 10px; justify-content: center; font-weight: 800; }
+.walk-screen-reader-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
 :root[data-theme="dark"] .walk-sound-check, :root[data-theme="dark"] .walk-simulation-controls { border-color: #4b5b4f; background: #26332a; color: #edf3ee; }
 :root[data-theme="dark"] .walk-simulation-controls > strong, :root[data-theme="dark"] .walk-simulation-controls > p, :root[data-theme="dark"] .walk-sound-check { color: #edf3ee; }
 @media (max-width: 850px) {
