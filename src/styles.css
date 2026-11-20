@@ -353,3 +353,8 @@ summary { min-height: 48px; }
   .walk-simulation-controls { flex: 0 0 auto; }
   .walk-stop-button { flex: 0 0 auto; }
 }
+
+@media (max-width: 850px) {
+  .workspace.report-mode { grid-template-rows: minmax(0, 1fr) 112px; }
+  .report-mode .map-workspace { min-height: 112px; }
+}
