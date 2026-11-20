@@ -1,10 +1,7 @@
-# Supabase setup
+# Supabase shared reports
 
-1. Open the Supabase SQL Editor for this project and run `schema.sql`.
-2. In Authentication settings, enable anonymous sign-ins. The app creates an anonymous Supabase user when the first report is submitted; no email is sent to Supabase.
-3. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in the app environment, then restart the Vite dev server.
-4. Reload the app. The map status should change to `공유 DB 연결` after the table can be read.
+The shared report table, public read policy, photo bucket, and Realtime publication are defined in `schema.sql`. Run that file in the project's Supabase SQL Editor, or use `npm run supabase:setup` with a Supabase Personal Access Token in the local environment. The token is used only by the setup script and is never included in the browser bundle.
 
-The public publishable key is intended for browser use. Do not put a Supabase secret/service-role key in a `VITE_` variable or browser code. Row Level Security allows public reads, authenticated inserts tied to the anonymous user's ID, and no report updates or deletes. Hazard reports and photos are public and should not include a person's face, license plate, email, or other private information.
+Anonymous sign-ins are enabled for this project. The app creates an anonymous Supabase user when a report is submitted; the demo email entered on the report screen is not sent to Supabase. The map status shows `공유 DB 연결` when the shared table is reachable. New reports are visible to all visitors. Existing local-only reports are not uploaded automatically.
 
-The existing demo hazards remain example data. Only reports submitted after Supabase is configured are shared. Legacy local-only records are not automatically uploaded.
+The browser uses only the public publishable key. Never put a Supabase secret/service-role key in a `VITE_` variable or browser code. Row Level Security permits public reads and inserts tied to the anonymous user's ID, but no report updates or deletes. Reports and photos are public; do not include faces, license plates, email addresses, or other private information. Demo map hazards remain example data.

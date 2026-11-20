@@ -75,3 +75,5 @@ begin
     alter publication supabase_realtime add table public.hazard_reports;
   end if;
 end $$;
+
+notify pgrst, 'reload schema';

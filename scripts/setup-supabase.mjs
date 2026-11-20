@@ -3,9 +3,39 @@ import pg from 'pg'
 
 const { Client } = pg
 const connectionString = process.env.SUPABASE_DB_URL
+const accessToken = process.env.SUPABASE_ACCESS_TOKEN
+const projectUrl = process.env.VITE_SUPABASE_URL
+const schema = await readFile(new URL('../supabase/schema.sql', import.meta.url), 'utf8')
+
+if (accessToken && projectUrl) {
+  try {
+    const projectRef = new URL(projectUrl).hostname.split('.')[0]
+    const response = await fetch(`https://api.supabase.com/v1/projects/${projectRef}/database/query`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: schema }),
+    })
+    if (!response.ok) {
+      const details = await response.text()
+      throw new Error(`Supabase management API returned ${response.status}: ${details.slice(0, 500)}`)
+    }
+    const verify = await fetch(new URL('/rest/v1/hazard_reports?select=id&limit=1', projectUrl), {
+      headers: { apikey: process.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? '' },
+    })
+    if (!verify.ok) throw new Error(`Schema request succeeded but public table check returned ${verify.status}.`)
+    console.log('Supabase setup succeeded: shared report table is publicly readable.')
+    process.exit(0)
+  } catch (error) {
+    console.error(`Supabase setup failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    process.exit(1)
+  }
+}
 
 if (!connectionString) {
-  console.error('SUPABASE_DB_URL is missing from .env')
+  console.error('Set SUPABASE_ACCESS_TOKEN and VITE_SUPABASE_URL, or SUPABASE_DB_URL.')
   process.exit(1)
 }
 
@@ -17,7 +47,6 @@ const client = new Client({
 
 try {
   await client.connect()
-  const schema = await readFile(new URL('../supabase/schema.sql', import.meta.url), 'utf8')
   await client.query(schema)
   const { rows } = await client.query(`
     select

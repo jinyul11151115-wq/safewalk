@@ -2,7 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import type { Hazard, HazardReport, HazardType, Passability } from './hazards'
 import type { PhotoDraft } from '../components/ReportWizard'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const configuredSupabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseUrl = configuredSupabaseUrl ? new URL(configuredSupabaseUrl).origin : ''
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 const bucket = 'hazard-photos'
 
