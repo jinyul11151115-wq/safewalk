@@ -1,0 +1,44 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - generic [ref=e14]: 대전 시범 운영
+      - button "설정 열기" [ref=e16] [cursor=pointer]:
+        - img [ref=e17]
+  - navigation "안심보행 화면" [ref=e20]:
+    - button "지도 화면으로 이동" [ref=e21] [cursor=pointer]:
+      - img [ref=e22]
+      - text: 지도
+    - button "제보하기 화면으로 이동" [ref=e25] [cursor=pointer]:
+      - img [ref=e26]
+      - text: 제보하기
+    - button "보행 모드 화면으로 이동" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 보행 모드
+    - button "내 신고 목록으로 이동" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 내 신고
+  - region "대전 보행 위험 지점 지도" [ref=e40]:
+    - generic [ref=e41]:
+      - application "카카오 지도" [ref=e42]
+      - button "지도에 표시된 위험 지점 목록 열기" [ref=e43] [cursor=pointer]:
+        - img [ref=e44]
+        - text: 목록
+      - alert:
+        - generic:
+          - img
+        - strong:
+          - text: 지도를 불러오지 못했습니다.
+          - text: 잠시 후 다시 시도해 주세요.
+        - button "카카오 지도 다시 불러오기" [ref=e45] [cursor=pointer]: 다시 시도
+  - generic [ref=e46]:
+    - button "보행 모드 열기" [ref=e47] [cursor=pointer]:
+      - img [ref=e48]
+      - text: 보행 모드 시작
+    - button "위험 지점 신고문 만들기" [ref=e51] [cursor=pointer]:
+      - img [ref=e52]

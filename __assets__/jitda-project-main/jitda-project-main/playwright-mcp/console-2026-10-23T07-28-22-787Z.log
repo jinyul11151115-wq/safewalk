@@ -1,0 +1,27 @@
+[     297ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[     714ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[    1012ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://7l9tfpabv8yrk3wn.jitda.io/favicon.ico:0
+[   15750ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[   15887ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[   16212ms] TypeError: Failed to execute 'speak' on 'SpeechSynthesis': parameter 1 is not of type 'SpeechSynthesisUtterance'.
+    at say (https://7l9tfpabv8yrk3wn.jitda.io/src/components/WalkModePanel.tsx?t=1792740354099:46:26)
+    at startWalk (https://7l9tfpabv8yrk3wn.jitda.io/src/components/WalkModePanel.tsx?t=1792740354099:194:3)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3199:32)
+    at invokeGuardedCallbackAndCatchFirstError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3212:26)
+    at executeDispatch (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6124:4)
+    at processDispatchQueueItemsInOrder (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6138:5)
+    at processDispatchQueue (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6146:5)
+    at dispatchEventsForPlugins (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6154:4)
+[   16213ms] TypeError: Failed to execute 'speak' on 'SpeechSynthesis': parameter 1 is not of type 'SpeechSynthesisUtterance'.
+    at say (https://7l9tfpabv8yrk3wn.jitda.io/src/components/WalkModePanel.tsx?t=1792740354099:46:26)
+    at startWalk (https://7l9tfpabv8yrk3wn.jitda.io/src/components/WalkModePanel.tsx?t=1792740354099:194:3)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3199:32)
+    at invokeGuardedCallbackAndCatchFirstError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3212:26)
+    at executeDispatch (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6124:4)
+    at processDispatchQueueItemsInOrder (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6138:5)
+    at processDispatchQueue (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6146:5)
+    at dispatchEventsForPlugins (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6154:4)

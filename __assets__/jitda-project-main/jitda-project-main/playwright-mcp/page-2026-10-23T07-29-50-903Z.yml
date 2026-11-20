@@ -1,0 +1,122 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전시청 부근
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - tablist "안심보행 메뉴" [ref=e27]:
+    - tab "지도 탭" [selected] [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 지도
+    - tab "제보하기 탭" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 제보하기
+    - tab "보행 모드 탭" [ref=e35] [cursor=pointer]:
+      - img [ref=e36]
+      - text: 보행 모드
+  - generic [ref=e39]:
+    - complementary "안심보행 탭 내용" [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - paragraph [ref=e44]: 대전 시범 지도
+            - heading "천천히, 안전하게." [level=1] [ref=e45]
+          - generic [ref=e46]:
+            - generic [ref=e47]: ●
+            - text: 임시 데이터
+        - paragraph [ref=e48]: 카카오 지도에서 주변 보도 위험을 살펴보세요.
+        - generic [ref=e49]:
+          - img [ref=e50]
+          - textbox "장소나 위험 내용 검색" [ref=e53]:
+            - /placeholder: 장소나 위험 내용을 검색
+          - button "검색 지우기" [ref=e54] [cursor=pointer]:
+            - img [ref=e55]
+        - generic [ref=e58]:
+          - heading "화면 안 위험 지점 5" [level=2] [ref=e59]:
+            - text: 화면 안 위험 지점
+            - generic [ref=e60]: "5"
+          - generic [ref=e61]: 지도 범위 기준
+        - generic [ref=e62]:
+          - button "대전시청 서쪽 보도, 가로수 뿌리로 보도 융기, 상태 미신고, 자세히 보기" [ref=e63] [cursor=pointer]:
+            - img [ref=e65]
+            - generic [ref=e67]:
+              - strong [ref=e68]: 가로수 뿌리로 보도 융기
+              - generic [ref=e69]: 대전시청 서쪽 보도
+              - generic [ref=e70]: 가로수 뿌리 · 미신고
+            - img [ref=e72]
+          - button "둔산로 100 앞, 횡단보도 진입 단차, 상태 신고됨, 자세히 보기" [ref=e74] [cursor=pointer]:
+            - img [ref=e76]
+            - generic [ref=e78]:
+              - strong [ref=e79]: 횡단보도 진입 단차
+              - generic [ref=e80]: 둔산로 100 앞
+              - generic [ref=e81]: 단차·턱 · 신고됨
+            - img [ref=e83]
+          - button "시청역 3번 출구 부근, 짧고 가파른 보도 경사, 상태 처리완료, 자세히 보기" [ref=e85] [cursor=pointer]:
+            - img [ref=e87]
+            - generic [ref=e89]:
+              - strong [ref=e90]: 짧고 가파른 보도 경사
+              - generic [ref=e91]: 시청역 3번 출구 부근
+              - generic [ref=e92]: 급경사 · 처리완료
+            - img [ref=e94]
+          - button "시청역 5번 출구 부근, 공사 펜스로 좁아진 보도, 상태 미신고, 자세히 보기" [ref=e96] [cursor=pointer]:
+            - img [ref=e98]
+            - generic [ref=e100]:
+              - strong [ref=e101]: 공사 펜스로 좁아진 보도
+              - generic [ref=e102]: 시청역 5번 출구 부근
+              - generic [ref=e103]: 좁은 보도 · 미신고
+            - img [ref=e105]
+          - button "시청역 시험 구간, 시험용 보도 단차, 상태 미신고, 자세히 보기" [ref=e107] [cursor=pointer]:
+            - img [ref=e109]
+            - generic [ref=e111]:
+              - strong [ref=e112]: 시험용 보도 단차
+              - generic [ref=e113]: 시청역 시험 구간
+              - generic [ref=e114]: 단차·턱 · 미신고
+            - img [ref=e116]
+        - generic [ref=e118]:
+          - img [ref=e119]
+          - generic [ref=e121]: 위험 지점은 예시 데이터예요. 새 제보는 이 브라우저에만 저장돼요.
+        - generic [ref=e122]:
+          - button "보행 모드 열기" [ref=e123] [cursor=pointer]:
+            - img [ref=e124]
+            - text: 보행 모드 열기
+            - generic [ref=e127]: 음성 안내
+          - button "위험 지점 신고문 만들기" [ref=e128] [cursor=pointer]:
+            - img [ref=e129]
+            - text: 안전신문고 신고문 만들기
+        - generic [ref=e131]:
+          - img [ref=e132]
+          - generic [ref=e135]: 보조 정보예요. 지팡이·안내견을 대신할 수 없어요.
+      - region "주변 위험을 미리 알려드려요." [ref=e137]:
+        - generic [ref=e138]:
+          - img [ref=e140]
+          - paragraph [ref=e143]: 위치 기반 음성 안내
+          - heading "주변 위험을 미리 알려드려요." [level=1] [ref=e144]:
+            - text: 주변 위험을
+            - text: 미리 알려드려요.
+          - paragraph [ref=e145]: 휴대전화를 안전하게 들고, 소리에 귀 기울여 주세요.
+          - button "보행 시작" [ref=e146] [cursor=pointer]:
+            - img [ref=e147]
+            - generic [ref=e149]: 보행 시작
+            - generic [ref=e150]: 누르면 음성 안내가 시작돼요
+          - paragraph [ref=e151]:
+            - img [ref=e152]
+            - text: 위치와 이동 경로는 기기에서만 확인해요.
+    - region "대전 보행 위험 지점 지도" [ref=e155]:
+      - generic [ref=e156]:
+        - application "카카오 지도" [ref=e157]
+        - alert [ref=e158]:
+          - img [ref=e160]
+          - strong [ref=e162]:
+            - text: 지도를 불러오지 못했습니다.
+            - text: 잠시 후 다시 시도해 주세요.
+          - button "카카오 지도 다시 불러오기" [ref=e163] [cursor=pointer]: 다시 시도

@@ -1,0 +1,100 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - generic [ref=e14]: 대전 시범 운영
+      - button "설정 열기" [ref=e16] [cursor=pointer]:
+        - img [ref=e17]
+  - navigation "안심보행 화면" [ref=e20]:
+    - button "지도 화면으로 이동" [active] [ref=e21] [cursor=pointer]:
+      - img [ref=e22]
+      - text: 지도
+    - button "제보하기 화면으로 이동" [ref=e25] [cursor=pointer]:
+      - img [ref=e26]
+      - text: 제보하기
+    - button "보행 모드 화면으로 이동" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 보행 모드
+    - button "내 신고 목록으로 이동" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 내 신고
+  - region "대전 보행 위험 지점 지도" [ref=e40]:
+    - generic [ref=e41]:
+      - application "OpenFreeMap 지도" [ref=e42]:
+        - generic:
+          - region "Map" [ref=e43]
+          - button "가로수 뿌리, 미신고, 가로수 뿌리로 보도 융기" [ref=e83] [cursor=pointer]:
+            - generic [ref=e84]: ⌁
+            - generic [ref=e85]: 뿌리
+            - generic [ref=e86]: 미신고
+          - button "단차·턱, 신고됨, 횡단보도 진입 단차" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: ↕
+            - generic [ref=e89]: 단차
+            - generic [ref=e90]: 신고됨
+          - button "급경사, 처리완료, 짧고 가파른 보도 경사" [ref=e91] [cursor=pointer]:
+            - generic [ref=e92]: ↗
+            - generic [ref=e93]: 경사
+            - generic [ref=e94]: 처리완료 ✓
+          - button "좁은 보도, 미신고, 공사 펜스로 좁아진 보도" [ref=e95] [cursor=pointer]:
+            - generic [ref=e96]: ↔
+            - generic [ref=e97]: 좁음
+            - generic [ref=e98]: 미신고
+        - group [ref=e99]:
+          - generic [ref=e100]:
+            - link "OpenFreeMap" [ref=e101] [cursor=pointer]:
+              - /url: https://openfreemap.org
+            - link "© OpenMapTiles" [ref=e102] [cursor=pointer]:
+              - /url: https://www.openmaptiles.org/
+            - text: Data from
+            - link "OpenStreetMap" [ref=e103] [cursor=pointer]:
+              - /url: https://www.openstreetmap.org/copyright
+      - group "지도 위험 지점 필터" [ref=e104]:
+        - group "유형별 위험 필터" [ref=e105]:
+          - generic [ref=e106]: 유형
+          - button "전체 유형 위험 보기" [pressed] [ref=e107] [cursor=pointer]: 전체 유형
+          - button "가로수 뿌리 위험 보기" [ref=e108] [cursor=pointer]: 가로수 뿌리
+          - button "보도블록 파손 위험 보기" [ref=e109] [cursor=pointer]: 보도블록 파손
+          - button "단차·턱 위험 보기" [ref=e110] [cursor=pointer]: 단차·턱
+          - button "급경사 위험 보기" [ref=e111] [cursor=pointer]: 급경사
+          - button "좁은 보도 위험 보기" [ref=e112] [cursor=pointer]: 좁은 보도
+          - button "공사 장애물 위험 보기" [ref=e113] [cursor=pointer]: 공사 장애물
+          - button "맨홀·배수구 위험 보기" [ref=e114] [cursor=pointer]: 맨홀·배수구
+          - button "미끄러운 노면 위험 보기" [ref=e115] [cursor=pointer]: 미끄러운 노면
+        - group "상태별 위험 필터" [ref=e116]:
+          - generic [ref=e117]: 상태
+          - button "전체 상태 위험 보기" [pressed] [ref=e118] [cursor=pointer]: 전체 상태
+          - button "미신고 위험 보기" [ref=e119] [cursor=pointer]: 미신고
+          - button "신고됨 위험 보기" [ref=e120] [cursor=pointer]: 신고됨
+          - button "처리완료 위험 보기" [ref=e121] [cursor=pointer]: 처리완료
+      - button "새 위험 지점 제보" [ref=e122] [cursor=pointer]:
+        - img [ref=e123]
+        - text: 위험 제보
+      - generic [ref=e124]:
+        - button "내 위치로 이동" [ref=e125] [cursor=pointer]:
+          - img [ref=e126]
+          - generic [ref=e129]: 내 위치
+        - button "지도 확대" [ref=e130] [cursor=pointer]:
+          - img [ref=e131]
+        - button "지도 축소" [ref=e132] [cursor=pointer]:
+          - img [ref=e133]
+      - note [ref=e134]: 현재 위치를 쓰려면 “내 위치”를 누르고 허용해 주세요.
+      - generic "위험 지점 상태 범례" [ref=e135]:
+        - generic [ref=e136]: 미신고
+        - generic [ref=e138]: 신고됨
+        - generic [ref=e140]:
+          - img [ref=e142]
+          - text: 처리완료
+      - button "지도에 표시된 위험 지점 목록 열기" [ref=e144] [cursor=pointer]:
+        - img [ref=e145]
+        - text: 목록
+  - generic [ref=e146]:
+    - button "보행 모드 열기" [ref=e147] [cursor=pointer]:
+      - img [ref=e148]
+      - text: 보행 모드 시작
+    - button "위험 지점 신고문 만들기" [ref=e151] [cursor=pointer]:
+      - img [ref=e152]

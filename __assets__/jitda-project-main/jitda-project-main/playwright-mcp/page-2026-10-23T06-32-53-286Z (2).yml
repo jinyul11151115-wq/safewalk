@@ -1,0 +1,134 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전 중구 은행동
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - generic [ref=e27]:
+    - complementary "위험 지점 정보" [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: 대전 시범 데이터
+          - heading "천천히, 안전하게." [level=1] [ref=e32]
+        - generic [ref=e33]:
+          - generic [ref=e34]: ●
+          - text: 예시 정보
+      - paragraph [ref=e35]: 위험 지점과 음성 안내 흐름을 미리 체험해 보세요.
+      - generic [ref=e36]:
+        - img [ref=e37]
+        - textbox "장소나 주소 검색" [ref=e40]:
+          - /placeholder: 장소나 주소를 검색하세요
+        - button "검색 지우기" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - generic "위험 종류 필터" [ref=e45]:
+        - img [ref=e46]
+        - button "전체 위험 지점 보기" [pressed] [ref=e47] [cursor=pointer]: 전체 위험
+        - button "단차 지점 보기" [ref=e48] [cursor=pointer]: 단차
+        - button "보도 폭 지점 보기" [ref=e49] [cursor=pointer]: 보도 폭
+        - button "바닥 파손 지점 보기" [ref=e50] [cursor=pointer]: 바닥 파손
+      - generic [ref=e51]:
+        - heading "주변 위험 지점 3" [level=2] [ref=e52]:
+          - text: 주변 위험 지점
+          - generic [ref=e53]: "3"
+        - button "위험 지점 목록 정렬" [ref=e54] [cursor=pointer]:
+          - text: 가까운 순
+          - img [ref=e55]
+      - generic [ref=e57]:
+        - button "으능정이문화거리 입구, 보도블록 단차, 40m 앞, 자세히 보기" [ref=e58] [cursor=pointer]:
+          - img [ref=e60]
+          - generic [ref=e62]:
+            - strong [ref=e63]: 보도블록 단차
+            - generic [ref=e64]: 으능정이문화거리 입구
+            - generic [ref=e65]: 약 8cm 높이 차이
+          - generic [ref=e66]:
+            - text: 40m 앞
+            - img [ref=e67]
+        - button "중앙로 164번길, 좁은 보도, 120m 앞, 자세히 보기" [ref=e69] [cursor=pointer]:
+          - img [ref=e71]
+          - generic [ref=e73]:
+            - strong [ref=e74]: 좁은 보도
+            - generic [ref=e75]: 중앙로 164번길
+            - generic [ref=e76]: 유효 폭 약 90cm
+          - generic [ref=e77]:
+            - text: 120m 앞
+            - img [ref=e78]
+        - button "대전천서로 교차로, 바닥 파손, 210m 앞, 자세히 보기" [ref=e80] [cursor=pointer]:
+          - img [ref=e82]
+          - generic [ref=e84]:
+            - strong [ref=e85]: 바닥 파손
+            - generic [ref=e86]: 대전천서로 교차로
+            - generic [ref=e87]: 가로수 뿌리로 보도 융기
+          - generic [ref=e88]:
+            - text: 210m 앞
+            - img [ref=e89]
+      - generic [ref=e91]:
+        - img [ref=e92]
+        - generic [ref=e94]: 위험 정보는 시민 제보를 바탕으로 해요. 현장 상황을 함께 살펴주세요.
+      - generic [ref=e95]:
+        - button "안심보행 음성 안내 시작" [ref=e96] [cursor=pointer]:
+          - img [ref=e97]
+          - text: 안심보행 시작
+          - generic [ref=e99]: 음성 안내
+        - button "위험 지점 신고문 만들기" [ref=e100] [cursor=pointer]:
+          - img [ref=e101]
+          - text: 위험 지점 신고
+      - generic [ref=e103]:
+        - img [ref=e104]
+        - generic [ref=e107]: 보조 정보예요. 지팡이·안내견을 대신할 수 없어요.
+    - region "대전 은행동 위험 지점 지도" [ref=e108]:
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - img [ref=e111]:
+            - generic [ref=e121]:
+              - generic [ref=e122]: 중앙로
+              - generic [ref=e123]: 대전천서로
+              - generic [ref=e124]: 으능정이문화거리
+              - generic [ref=e125]: 은행동
+              - generic [ref=e126]: 대전천
+              - generic [ref=e127]: 대흥로
+          - generic [ref=e139]:
+            - generic [ref=e140]: ✦
+            - text: 으능정이문화거리
+          - generic [ref=e141]: 대전천
+          - button "보도블록 단차 위험 지점, 40m 앞" [ref=e142] [cursor=pointer]:
+            - img [ref=e144]
+            - generic [ref=e146]: 단차
+          - button "좁은 보도 위험 지점, 120m 앞" [ref=e147] [cursor=pointer]:
+            - img [ref=e149]
+            - generic [ref=e151]: 보도 폭
+          - button "바닥 파손 위험 지점, 210m 앞" [ref=e152] [cursor=pointer]:
+            - img [ref=e154]
+            - generic [ref=e156]: 바닥 파손
+          - generic [ref=e159]: 현재 위치
+        - generic [ref=e160]:
+          - img [ref=e161]
+          - text: 대전 중구 은행동
+          - generic [ref=e164]: ·
+          - text: 위험 지점 3곳
+      - generic [ref=e165]:
+        - button "현재 위치로 이동" [ref=e166] [cursor=pointer]:
+          - img [ref=e167]
+        - generic [ref=e170]:
+          - button "지도 확대" [ref=e171] [cursor=pointer]:
+            - img [ref=e172]
+          - generic "지도 확대 단계 3" [ref=e173]
+          - button "지도 축소" [ref=e174] [cursor=pointer]:
+            - img [ref=e175]
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - img [ref=e179]
+          - text: 보행 위험
+        - generic [ref=e181]: 내 위치
+      - generic [ref=e183]:
+        - img [ref=e184]
+        - text: 지도 예시 화면 · 제보는 시범 데이터

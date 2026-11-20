@@ -1,0 +1,75 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - generic [ref=e14]: 대전 시범 운영
+      - button "설정 열기" [ref=e16] [cursor=pointer]:
+        - img [ref=e17]
+  - navigation "안심보행 화면" [ref=e20]:
+    - button "지도 화면으로 이동" [ref=e21] [cursor=pointer]:
+      - img [ref=e22]
+      - text: 지도
+    - button "제보하기 화면으로 이동" [ref=e25] [cursor=pointer]:
+      - img [ref=e26]
+      - text: 제보하기
+    - button "보행 모드 화면으로 이동" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 보행 모드
+    - button "내 신고 목록으로 이동" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 내 신고
+  - complementary "안심보행 탭 내용" [ref=e57]:
+    - region "보행 위험 제보" [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: 제보하기
+          - heading "보행 위험 제보" [level=1] [ref=e63]
+        - button "체험 계정 로그아웃" [ref=e64] [cursor=pointer]:
+          - img [ref=e65]
+          - text: 체험 계정
+          - img [ref=e69]
+      - group "제보 메뉴" [ref=e72]:
+        - button "새 제보 화면" [pressed] [ref=e73] [cursor=pointer]: 새 제보
+        - button "내 제보 목록 보기" [ref=e74] [cursor=pointer]:
+          - text: 내 제보
+          - generic [ref=e75]: "0"
+      - generic "총 6단계 중 2단계" [ref=e118]:
+        - generic [ref=e77]:
+          - generic [ref=e78]: 단계 2 / 6
+          - strong [ref=e79]: 사진
+      - region "사진 단계 입력" [ref=e119]:
+        - region "사진 두 장을 올려주세요." [ref=e120]:
+          - paragraph [ref=e121]: 2단계 · 사진
+          - heading "사진 두 장을 올려주세요." [level=2] [ref=e122]
+          - paragraph [ref=e123]: 멀리서 한 장, 가까이서 한 장이 필요해요.
+          - generic [ref=e124]:
+            - generic [ref=e125] [cursor=pointer]:
+              - button "멀리서 구간 전체 사진 선택" [ref=e126]
+              - img "멀리서 구간 전체 미리보기" [ref=e152]
+              - status [ref=e153]:
+                - img [ref=e154]
+                - text: 사진 준비됨 · 1600×800px
+              - generic [ref=e133]: 멀리서 구간 전체
+            - generic [ref=e135] [cursor=pointer]:
+              - button "가까이서 위험 부위 사진 선택" [active] [ref=e136]
+              - img "가까이서 위험 부위 미리보기" [ref=e156]
+              - status [ref=e157]:
+                - img [ref=e158]
+                - text: 사진 준비됨 · 1600×800px
+              - generic [ref=e143]: 가까이서 위험 부위
+          - generic [ref=e145]:
+            - img [ref=e146]
+            - generic [ref=e149]: 사람 얼굴이나 차량 번호판이 나오지 않게 찍어 주세요. 차도에 나가서 찍지 마세요.
+          - paragraph [ref=e150]: 사진은 저장 전에 긴 쪽을 1600px 이하로 줄여요. 현재는 브라우저에 임시 저장됩니다.
+      - generic [ref=e104]:
+        - button "이전 단계" [ref=e151] [cursor=pointer]:
+          - img [ref=e106]
+          - text: 이전
+        - button "다음 단계" [ref=e108] [cursor=pointer]:
+          - text: 다음 단계
+          - img [ref=e109]

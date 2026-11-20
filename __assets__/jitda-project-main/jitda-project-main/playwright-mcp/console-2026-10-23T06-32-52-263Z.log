@@ -1,0 +1,7 @@
+[     114ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:0
+[     527ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=6e4036a8:17218
+[  169729ms] [LOG] [vite] server connection lost. Polling for restart... @ https://7l9tfpabv8yrk3wn.jitda.io/@vite/client:1089
+[  170223ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:0
+[  170229ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://7l9tfpabv8yrk3wn.jitda.io/@vite/client:0
+[  170231ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://7l9tfpabv8yrk3wn.jitda.io/@react-refresh:0
+[  170231ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://7l9tfpabv8yrk3wn.jitda.io/src/main.tsx:0

@@ -1,0 +1,49 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전시청 부근
+    - generic [ref=e18]:
+      - generic [ref=e19]: 대전 시범 운영
+      - button "설정 열기" [ref=e21] [cursor=pointer]:
+        - img [ref=e22]
+  - navigation "안심보행 화면" [ref=e25]:
+    - button "지도 화면으로 이동" [ref=e26] [cursor=pointer]:
+      - img [ref=e27]
+      - text: 지도
+    - button "제보하기 화면으로 이동" [ref=e30] [cursor=pointer]:
+      - img [ref=e31]
+      - text: 제보하기
+    - button "보행 모드 화면으로 이동" [ref=e33] [cursor=pointer]:
+      - img [ref=e34]
+      - text: 보행 모드
+    - button "내 신고 목록으로 이동" [ref=e37] [cursor=pointer]:
+      - img [ref=e38]
+      - text: 내 신고
+  - complementary "안심보행 탭 내용" [ref=e44]:
+    - region "내 신고 목록" [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - paragraph [ref=e224]: 내 기록
+          - heading "내 신고 목록" [active] [level=1] [ref=e225]
+        - img [ref=e226]
+      - group "신고 상태별 목록" [ref=e229]:
+        - button "신고 대기 신고만 보기" [ref=e230] [cursor=pointer]:
+          - text: 신고 대기
+          - generic [ref=e231]: "0"
+        - button "신고됨 신고만 보기" [ref=e232] [cursor=pointer]:
+          - text: 신고됨
+          - generic [ref=e233]: "0"
+        - button "처리완료 신고만 보기" [ref=e234] [cursor=pointer]:
+          - text: 처리완료
+          - generic [ref=e235]: "0"
+      - generic [ref=e237]:
+        - img [ref=e238]
+        - paragraph [ref=e241]: 아직 신고 내역이 없어요.
+        - generic [ref=e242]: 위험 지점을 제보하면 여기에 모아 보여드려요.

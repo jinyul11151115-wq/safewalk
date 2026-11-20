@@ -1,0 +1,16 @@
+[     132ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[    1043ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[    1412ms] [WARNING] [.WebGL-0x36cc00131a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    1535ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    2406ms] [WARNING] [.WebGL-0x36cc00131a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    2520ms] [WARNING] [.WebGL-0x36cc00131a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    2714ms] [WARNING] [.WebGL-0x36cc00131a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat) @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    3234ms] [WARNING] layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[    3236ms] [WARNING] layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[    3238ms] [WARNING] layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[   29705ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[   30122ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[   30916ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[   31321ms] [WARNING] layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[   31324ms] [WARNING] layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[   31327ms] [WARNING] layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6

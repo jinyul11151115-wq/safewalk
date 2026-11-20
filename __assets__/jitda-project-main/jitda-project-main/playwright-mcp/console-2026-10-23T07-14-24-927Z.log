@@ -1,0 +1,47 @@
+[     257ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[     581ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[     861ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://7l9tfpabv8yrk3wn.jitda.io/favicon.ico:0
+[  442383ms] ReferenceError: startWalk is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740107088:567:20)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:9620:19)
+    at updateFunctionComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:12114:19)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:13088:13)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15506:36)
+[  442438ms] ReferenceError: startWalk is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740107088:567:20)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:9620:19)
+    at updateFunctionComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:12114:19)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:13088:13)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15506:36)
+[  442386ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740107088:25:30)
+    at KakaoMapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/KakaoMapContext.tsx?t=1792738681291:49:36)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[  442438ms] ReferenceError: startWalk is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740107088:567:20)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:9620:19)
+    at updateFunctionComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:12114:19)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:13088:13)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15293:19)
+[  541053ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740205917:0
+[  541054ms] [ERROR] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[  564467ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792740229329:0
+[  564468ms] [ERROR] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188

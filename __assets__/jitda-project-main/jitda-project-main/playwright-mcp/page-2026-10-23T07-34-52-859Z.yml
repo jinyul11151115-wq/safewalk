@@ -1,0 +1,38 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - tablist "안심보행 메뉴" [ref=e27]:
+    - tab "지도 탭" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 지도
+    - tab "제보하기 탭" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 제보하기
+    - tab "보행 모드 탭" [active] [selected] [ref=e35] [cursor=pointer]:
+      - img [ref=e36]
+      - text: 보행 모드
+  - complementary "안심보행 탭 내용" [ref=e40]:
+    - region "주변 위험을 미리 알려드려요." [ref=e253]:
+      - generic [ref=e149]:
+        - img [ref=e254]
+        - paragraph [ref=e257]: 위치 기반 음성 안내
+        - heading "주변 위험을 미리 알려드려요." [level=1] [ref=e258]:
+          - text: 주변 위험을
+          - text: 미리 알려드려요.
+        - paragraph [ref=e259]: 휴대전화를 안전하게 들고, 소리에 귀 기울여 주세요.
+        - button "보행 시작" [ref=e260] [cursor=pointer]:
+          - img [ref=e261]
+          - generic [ref=e263]: 보행 시작
+          - generic [ref=e264]: 누르면 음성 안내가 시작돼요
+        - paragraph [ref=e265]:
+          - img [ref=e266]
+          - text: 위치와 이동 경로는 기기에서만 확인해요.

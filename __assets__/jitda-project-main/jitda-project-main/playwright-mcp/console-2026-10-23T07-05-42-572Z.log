@@ -1,0 +1,30 @@
+[      35ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[     295ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[     405ms] TypeError: locationOverlayRef.current.setPosition is not a function
+    at https://7l9tfpabv8yrk3wn.jitda.io/src/map/KakaoMapContext.tsx?t=1792738681291:108:30
+    at commitHookEffectListMount (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:13816:24)
+    at commitPassiveMountOnFiber (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14757:7)
+    at commitPassiveMountEffects_complete (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14731:7)
+    at commitPassiveMountEffects_begin (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14722:12)
+    at commitPassiveMountEffects (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14713:4)
+    at flushPassiveEffectsImpl (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15785:4)
+    at flushPassiveEffects (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15752:13)
+    at https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15665:7
+    at workLoop (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:174:33)
+[     405ms] [ERROR] The above error occurred in the <KakaoMapProvider> component:
+
+    at KakaoMapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/KakaoMapContext.tsx?t=1792738681291:49:36)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[     406ms] TypeError: locationOverlayRef.current.setPosition is not a function
+    at https://7l9tfpabv8yrk3wn.jitda.io/src/map/KakaoMapContext.tsx?t=1792738681291:108:30
+    at commitHookEffectListMount (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:13816:24)
+    at commitPassiveMountOnFiber (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14757:7)
+    at commitPassiveMountEffects_complete (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14731:7)
+    at commitPassiveMountEffects_begin (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14722:12)
+    at commitPassiveMountEffects (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:14713:4)
+    at flushPassiveEffectsImpl (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15785:4)
+    at flushPassiveEffects (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15752:13)
+    at https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:15665:7
+    at workLoop (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:174:33)

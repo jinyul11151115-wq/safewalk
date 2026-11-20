@@ -1,0 +1,96 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 현재 위치 · 기기에서만 확인
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - tablist "안심보행 메뉴" [ref=e27]:
+    - tab "지도 탭" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 지도
+    - tab "제보하기 탭" [selected] [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 제보하기
+    - tab "보행 모드 탭" [ref=e35] [cursor=pointer]:
+      - img [ref=e36]
+      - text: 보행 모드
+    - tab "내 신고 목록 탭" [ref=e39] [cursor=pointer]:
+      - img [ref=e40]
+      - text: 내 신고
+  - generic [ref=e45]:
+    - complementary "안심보행 탭 내용" [ref=e46]:
+      - region "보행 위험 제보" [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - paragraph [ref=e201]: 제보하기
+            - heading "보행 위험 제보" [level=1] [ref=e202]
+          - button "체험 계정 로그아웃" [ref=e203] [cursor=pointer]:
+            - img [ref=e204]
+            - text: 체험 계정
+            - img [ref=e208]
+        - tablist "제보 메뉴" [ref=e211]:
+          - tab "새 제보 화면" [selected] [ref=e212] [cursor=pointer]: 새 제보
+          - tab "내 제보 목록 보기" [ref=e213] [cursor=pointer]:
+            - text: 내 제보
+            - generic [ref=e214]: "0"
+        - generic "총 6단계 중 1단계" [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: 단계 1 / 6
+            - strong [ref=e218]: 위치
+        - region "위험 지점은 어디인가요?" [ref=e222]:
+          - paragraph [ref=e223]: 1단계 · 위치
+          - heading "위험 지점은 어디인가요?" [level=2] [ref=e224]
+          - paragraph [ref=e225]: 지도에서 핀을 끌어 정확한 위치로 옮겨주세요.
+          - generic [ref=e226]:
+            - img [ref=e228]
+            - generic [ref=e231]:
+              - strong [ref=e232]: 위치 정확도 약 9미터
+              - generic [ref=e233]: 36.35000, 127.38450
+            - button "현재 GPS 위치 다시 찾기" [ref=e234] [cursor=pointer]:
+              - img [ref=e235]
+          - button "현재 GPS 위치 찾기" [ref=e238] [cursor=pointer]:
+            - img [ref=e239]
+            - text: 현재 GPS 위치 찾기
+          - paragraph [ref=e242]: 핀을 누른 채 움직여 위치를 보정할 수 있어요.
+        - generic [ref=e243]:
+          - button "지도 탭으로 돌아가기" [ref=e244] [cursor=pointer]:
+            - img [ref=e245]
+            - text: 지도
+          - button "다음 단계" [ref=e247] [cursor=pointer]:
+            - text: 다음 단계
+            - img [ref=e248]
+    - region "제보 위치 조정 지도" [ref=e196]:
+      - generic [ref=e144]:
+        - application "카카오 지도" [ref=e145]
+        - alert:
+          - generic:
+            - img
+          - strong:
+            - text: 지도를 불러오지 못했습니다.
+            - text: 잠시 후 다시 시도해 주세요.
+          - button "카카오 지도 다시 불러오기" [ref=e146] [cursor=pointer]: 다시 시도
+  - dialog "위험 지점이 고쳐졌나요?" [ref=e250]:
+    - generic [ref=e251]:
+      - img [ref=e253]
+      - button "처리완료 확인 닫기" [ref=e255] [cursor=pointer]:
+        - img [ref=e256]
+    - paragraph [ref=e259]: 로그인 사용자 확인
+    - heading "위험 지점이 고쳐졌나요?" [level=2] [ref=e260]
+    - paragraph [ref=e261]: “가로수 뿌리 융기” 현장 사진 한 장을 올려 처리완료 확인을 보내주세요. 사진은 1600px 이하로 줄여 이 브라우저에 임시 저장해요.
+    - generic [ref=e262] [cursor=pointer]:
+      - img "처리완료 확인 사진 미리보기" [ref=e273]
+      - button "처리완료 확인 사진 선택" [active] [ref=e267]
+    - generic [ref=e268]:
+      - img [ref=e269]
+      - text: 데모 모드라 실제 로그인이나 서버 업로드는 연결되지 않았어요.
+    - button "처리완료 사진을 임시 저장하고 확인" [ref=e271] [cursor=pointer]: 처리완료 확인 보내기

@@ -1,0 +1,35 @@
+- main [ref=e213]:
+  - link "안심보행 지도 처음 화면" [ref=e215] [cursor=pointer]:
+    - /url: "#home"
+    - img [ref=e217]
+    - generic [ref=e220]:
+      - strong [ref=e221]: 안심보행
+      - generic [ref=e222]: SAFE WALK · 대전 시범 운영
+  - region "대전 은행동 위험 지점 지도" [ref=e231]:
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - img [ref=e234]:
+          - generic [ref=e244]:
+            - generic [ref=e245]: 중앙로
+            - generic [ref=e246]: 대전천서로
+            - generic [ref=e247]: 으능정이문화거리
+            - generic [ref=e248]: 은행동
+            - generic [ref=e249]: 대전천
+            - generic [ref=e250]: 대흥로
+        - generic [ref=e262]:
+          - generic [ref=e263]: ✦
+          - text: 으능정이문화거리
+        - generic [ref=e264]: 대전천
+        - button [ref=e313] [cursor=pointer]:
+          - img [ref=e267]
+        - button [ref=e314] [cursor=pointer]:
+          - img [ref=e271]
+        - button [ref=e315] [cursor=pointer]:
+          - img [ref=e275]
+        - generic [ref=e279]: 현재 위치
+      - generic [ref=e317]:
+        - img [ref=e318]
+        - text: 음성 안내 중
+  - button "안심보행 음성 안내 멈추기" [active] [ref=e319] [cursor=pointer]:
+    - img [ref=e320]
+    - text: 안내 멈추기

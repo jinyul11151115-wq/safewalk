@@ -1,0 +1,62 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - region "대전 은행동 위험 지점 지도" [ref=e108]:
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - img [ref=e111]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: 중앙로
+            - generic [ref=e123]: 대전천서로
+            - generic [ref=e124]: 으능정이문화거리
+            - generic [ref=e125]: 은행동
+            - generic [ref=e126]: 대전천
+            - generic [ref=e127]: 대흥로
+        - generic [ref=e139]:
+          - generic [ref=e140]: ✦
+          - text: 으능정이문화거리
+        - generic [ref=e141]: 대전천
+        - button [ref=e142] [cursor=pointer]:
+          - img [ref=e144]
+        - button [ref=e147] [cursor=pointer]:
+          - img [ref=e149]
+        - button [ref=e152] [cursor=pointer]:
+          - img [ref=e154]
+        - generic [ref=e159]: 현재 위치
+      - generic [ref=e160]:
+        - img [ref=e161]
+        - text: 대전 중구 은행동
+        - generic [ref=e164]: ·
+        - text: 위험 지점 3곳
+    - generic [ref=e165]:
+      - button "현재 위치로 이동" [ref=e166] [cursor=pointer]:
+        - img [ref=e167]
+      - generic [ref=e170]:
+        - button "지도 확대" [ref=e171] [cursor=pointer]:
+          - img [ref=e172]
+        - generic "지도 확대 단계 3" [ref=e173]
+        - button "지도 축소" [ref=e174] [cursor=pointer]:
+          - img [ref=e175]
+    - generic [ref=e176]:
+      - generic [ref=e177]:
+        - img [ref=e179]
+        - text: 보행 위험
+      - generic [ref=e181]: 내 위치
+    - generic [ref=e183]:
+      - img [ref=e184]
+      - text: 지도 예시 화면 · 제보는 시범 데이터
+  - generic [ref=e206]:
+    - button "안심보행 음성 안내 시작" [ref=e207] [cursor=pointer]:
+      - img [ref=e208]
+      - text: 안심보행 시작
+    - button "위험 지점 신고문 만들기" [ref=e210] [cursor=pointer]:
+      - img [ref=e211]

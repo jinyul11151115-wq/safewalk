@@ -1,0 +1,67 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전시청 부근
+    - generic [ref=e18]:
+      - generic [ref=e19]: 대전 시범 운영
+      - button "설정 열기" [ref=e21] [cursor=pointer]:
+        - img [ref=e22]
+  - navigation "안심보행 화면" [ref=e25]:
+    - button "지도 화면으로 이동" [ref=e26] [cursor=pointer]:
+      - img [ref=e27]
+      - text: 지도
+    - button "제보하기 화면으로 이동" [ref=e30] [cursor=pointer]:
+      - img [ref=e31]
+      - text: 제보하기
+    - button "보행 모드 화면으로 이동" [ref=e33] [cursor=pointer]:
+      - img [ref=e34]
+      - text: 보행 모드
+    - button "내 신고 목록으로 이동" [ref=e37] [cursor=pointer]:
+      - img [ref=e38]
+      - text: 내 신고
+  - complementary "안심보행 탭 내용" [ref=e44]:
+    - region "내 신고 목록" [ref=e151]:
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - paragraph [ref=e154]: 내 기록
+          - heading "내 신고 목록" [active] [level=1] [ref=e155]
+        - img [ref=e156]
+      - group "신고 상태별 목록" [ref=e159]:
+        - button "신고 대기 신고만 보기" [ref=e160] [cursor=pointer]:
+          - text: 신고 대기
+          - generic [ref=e161]: "1"
+        - button "신고됨 신고만 보기" [ref=e162] [cursor=pointer]:
+          - text: 신고됨
+          - generic [ref=e163]: "1"
+        - button "처리완료 신고만 보기" [ref=e164] [cursor=pointer]:
+          - text: 처리완료
+          - generic [ref=e165]: "1"
+      - generic [ref=e166]:
+        - article [ref=e167]:
+          - generic [ref=e168]:
+            - img [ref=e169]
+            - text: 신고됨
+          - strong [ref=e171]: 시험 신고됨 제보
+          - generic [ref=e172]: 보도블록 파손 · 신고됨 상태 테스트
+          - generic [ref=e173]: 접수번호 R-TEST · 2026. 3. 1.
+          - button "시험 신고됨 제보 신고 화면 다시 열기" [disabled] [ref=e175] [cursor=pointer]: 신고 화면 다시 열기
+        - article [ref=e176]:
+          - generic [ref=e177]:
+            - img [ref=e178]
+            - text: 처리완료
+          - strong [ref=e180]: 시험 처리완료 제보
+          - generic [ref=e181]: 시험 위치 · 확인 사진 0장
+          - generic [ref=e182]: 2026. 2. 1.
+        - article [ref=e183]:
+          - generic [ref=e184]: 접수번호 입력 대기
+          - strong [ref=e185]: 시험 대기 제보
+          - generic [ref=e186]: 단차·턱 · 대기 상태 테스트 · 사진 0장
+          - generic [ref=e187]: 등록 위치 · 2026. 1. 1.
+          - button "시험 대기 제보 신고 화면 다시 열기" [disabled] [ref=e189] [cursor=pointer]: 신고 화면 다시 열기

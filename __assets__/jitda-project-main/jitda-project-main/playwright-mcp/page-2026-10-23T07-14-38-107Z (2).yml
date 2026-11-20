@@ -1,0 +1,54 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전시청 부근
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - tablist "안심보행 메뉴" [ref=e27]:
+    - tab "지도 탭" [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 지도
+    - tab "제보하기 탭" [active] [selected] [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 제보하기
+  - generic [ref=e35]:
+    - complementary "안심보행 탭 내용" [ref=e36]:
+      - region "로그인 후 안전 정보를 나눠요." [ref=e131]:
+        - img [ref=e133]
+        - paragraph [ref=e137]: 제보하기
+        - heading "로그인 후 안전 정보를 나눠요." [level=1] [ref=e138]:
+          - text: 로그인 후
+          - text: 안전 정보를 나눠요.
+        - paragraph [ref=e139]: 제보와 내 제보 목록은 로그인한 체험 계정에서만 볼 수 있어요.
+        - generic [ref=e140]:
+          - img [ref=e141]
+          - text: 실제 계정 로그인이 아닌 브라우저 데모예요. 다른 기기와 공유되지 않아요.
+        - generic [ref=e143]:
+          - generic [ref=e144]: 체험용 이메일
+          - textbox "체험용 이메일" [ref=e145]:
+            - /placeholder: name@example.com
+          - button "체험 계정으로 로그인" [ref=e146] [cursor=pointer]:
+            - text: 체험 계정으로 로그인
+            - img [ref=e147]
+        - button "지도 탭으로 돌아가기" [ref=e149] [cursor=pointer]:
+          - img [ref=e150]
+          - text: 지도 보기
+    - region "제보 위치 조정 지도" [ref=e152]:
+      - generic [ref=e122]:
+        - application "카카오 지도" [ref=e123]
+        - alert [ref=e124]:
+          - img [ref=e126]
+          - strong [ref=e128]:
+            - text: 지도를 불러오지 못했습니다.
+            - text: 잠시 후 다시 시도해 주세요.
+          - button "카카오 지도 다시 불러오기" [ref=e129] [cursor=pointer]: 다시 시도

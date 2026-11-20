@@ -1,0 +1,122 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 대전시청 부근
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - generic [ref=e27]:
+    - complementary "위험 지점 정보" [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: 대전 시범 지도
+          - heading "천천히, 안전하게." [level=1] [ref=e32]
+        - generic [ref=e33]:
+          - generic [ref=e34]: ●
+          - text: 임시 데이터
+      - paragraph [ref=e35]: 카카오 지도에서 주변 보도 위험을 살펴보세요.
+      - generic [ref=e36]:
+        - img [ref=e37]
+        - textbox "장소나 위험 내용 검색" [ref=e40]:
+          - /placeholder: 장소나 위험 내용을 검색
+        - button "검색 지우기" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - generic [ref=e45]:
+        - heading "화면 안 위험 지점 4" [level=2] [ref=e46]:
+          - text: 화면 안 위험 지점
+          - generic [ref=e47]: "4"
+        - generic [ref=e48]: 지도 범위 기준
+      - generic [ref=e49]:
+        - button "대전시청 서쪽 보도, 가로수 뿌리로 보도 융기, 상태 미신고, 자세히 보기" [active] [ref=e50] [cursor=pointer]:
+          - img [ref=e52]
+          - generic [ref=e54]:
+            - strong [ref=e55]: 가로수 뿌리로 보도 융기
+            - generic [ref=e56]: 대전시청 서쪽 보도
+            - generic [ref=e57]: 가로수 뿌리 · 미신고
+          - img [ref=e59]
+        - button "둔산로 100 앞, 횡단보도 진입 단차, 상태 신고됨, 자세히 보기" [ref=e61] [cursor=pointer]:
+          - img [ref=e63]
+          - generic [ref=e65]:
+            - strong [ref=e66]: 횡단보도 진입 단차
+            - generic [ref=e67]: 둔산로 100 앞
+            - generic [ref=e68]: 단차 · 신고됨
+          - img [ref=e70]
+        - button "시청역 3번 출구 부근, 짧고 가파른 보도 경사, 상태 처리완료, 자세히 보기" [ref=e72] [cursor=pointer]:
+          - img [ref=e74]
+          - generic [ref=e76]:
+            - strong [ref=e77]: 짧고 가파른 보도 경사
+            - generic [ref=e78]: 시청역 3번 출구 부근
+            - generic [ref=e79]: 급경사 · 처리완료
+          - img [ref=e81]
+        - button "시청역 5번 출구 부근, 공사 펜스로 좁아진 보도, 상태 미신고, 자세히 보기" [ref=e83] [cursor=pointer]:
+          - img [ref=e85]
+          - generic [ref=e87]:
+            - strong [ref=e88]: 공사 펜스로 좁아진 보도
+            - generic [ref=e89]: 시청역 5번 출구 부근
+            - generic [ref=e90]: 좁은 보도 · 미신고
+          - img [ref=e92]
+      - generic [ref=e94]:
+        - img [ref=e95]
+        - generic [ref=e97]: 위험 지점은 예시 데이터예요. 새 제보는 이 브라우저에만 저장돼요.
+      - generic [ref=e98]:
+        - button "안심보행 음성 안내 시작" [ref=e99] [cursor=pointer]:
+          - img [ref=e100]
+          - text: 안심보행 시작
+          - generic [ref=e102]: 음성 안내
+        - button "위험 지점 신고문 만들기" [ref=e103] [cursor=pointer]:
+          - img [ref=e104]
+          - text: 안전신문고 신고문 만들기
+      - generic [ref=e106]:
+        - img [ref=e107]
+        - generic [ref=e110]: 보조 정보예요. 지팡이·안내견을 대신할 수 없어요.
+    - generic [ref=e111]:
+      - region "대전 보행 위험 지점 지도" [ref=e112]:
+        - generic [ref=e113]:
+          - application "카카오 지도" [ref=e114]
+          - alert [ref=e118]:
+            - img [ref=e120]
+            - strong [ref=e122]:
+              - text: 지도를 불러오지 못했습니다.
+              - text: 잠시 후 다시 시도해 주세요.
+            - button "카카오 지도 다시 불러오기" [ref=e123] [cursor=pointer]: 다시 시도
+      - region "가로수 뿌리로 보도 융기" [ref=e124]:
+        - generic [ref=e125]:
+          - img [ref=e128]
+          - generic [ref=e130]:
+            - generic [ref=e131]: 뿌리 · 가로수 뿌리
+            - heading "가로수 뿌리로 보도 융기" [level=2] [ref=e132]
+            - generic [ref=e133]:
+              - img [ref=e134]
+              - text: 대전시청 서쪽 보도
+          - button "위험 지점 상세 닫기" [ref=e137] [cursor=pointer]:
+            - img [ref=e138]
+        - paragraph [ref=e141]: 보도블록이 약 7cm 솟아 있어요.
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - generic [ref=e144]: 상태
+            - strong [ref=e145]: 미신고
+          - generic [ref=e146]:
+            - generic [ref=e147]: 제보 수
+            - strong [ref=e148]: 4건
+          - generic [ref=e149]:
+            - generic [ref=e150]: 최근 확인
+            - strong [ref=e151]: 2026. 10. 20.
+        - generic "이동 수단별 통행 가능 여부" [ref=e152]:
+          - generic [ref=e153]: 주의 · 휠체어
+          - generic [ref=e154]: 주의 · 유모차
+          - generic [ref=e155]: 가능 · 보행
+        - generic "제보 사진" [ref=e156]:
+          - img "제보 사진 1, 예시 이미지" [ref=e157]:
+            - generic [ref=e159]: 시범 제보 사진
+        - button "가로수 뿌리로 보도 융기 신고문 만들기" [ref=e160] [cursor=pointer]:
+          - img [ref=e161]
+          - text: 신고문 만들기

@@ -1,0 +1,111 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - link "안심보행 지도 처음 화면" [ref=e5] [cursor=pointer]:
+      - /url: "#home"
+      - img [ref=e7]
+      - generic [ref=e10]:
+        - strong [ref=e11]: 안심보행
+        - generic [ref=e12]: SAFE WALK · 대전 시범 운영
+    - generic [ref=e13]:
+      - img [ref=e14]
+      - generic [ref=e17]: 현재 위치 · 기기에서만 확인
+      - img [ref=e18]
+    - generic [ref=e20]:
+      - generic [ref=e21]: 대전 시범 운영
+      - button "설정 열기" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - tablist "안심보행 메뉴" [ref=e27]:
+    - tab "지도 탭" [selected] [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+      - text: 지도
+    - tab "제보하기 탭" [ref=e32] [cursor=pointer]:
+      - img [ref=e33]
+      - text: 제보하기
+    - tab "보행 모드 탭" [ref=e35] [cursor=pointer]:
+      - img [ref=e36]
+      - text: 보행 모드
+    - tab "내 신고 목록 탭" [ref=e39] [cursor=pointer]:
+      - img [ref=e40]
+      - text: 내 신고
+  - generic [ref=e45]:
+    - complementary "안심보행 탭 내용" [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - paragraph [ref=e50]: 대전 시범 지도
+            - heading "천천히, 안전하게." [level=1] [ref=e51]
+          - generic [ref=e52]:
+            - generic [ref=e53]: ●
+            - text: 임시 데이터
+        - paragraph [ref=e54]: 카카오 지도에서 주변 보도 위험을 살펴보세요.
+        - generic [ref=e55]:
+          - img [ref=e56]
+          - textbox "장소나 위험 내용 검색" [ref=e59]:
+            - /placeholder: 장소나 위험 내용을 검색
+          - button "검색 지우기" [ref=e60] [cursor=pointer]:
+            - img [ref=e61]
+        - generic [ref=e64]:
+          - heading "화면 안 위험 지점 5" [level=2] [ref=e65]:
+            - text: 화면 안 위험 지점
+            - generic [ref=e66]: "5"
+          - generic [ref=e67]: 지도 범위 기준
+        - generic [ref=e68]:
+          - button "대전시청 서쪽 보도, 가로수 뿌리로 보도 융기, 상태 미신고, 자세히 보기" [ref=e69] [cursor=pointer]:
+            - img [ref=e71]
+            - generic [ref=e73]:
+              - strong [ref=e74]: 가로수 뿌리로 보도 융기
+              - generic [ref=e75]: 대전시청 서쪽 보도
+              - generic [ref=e76]: 가로수 뿌리 · 미신고
+            - img [ref=e78]
+          - button "둔산로 100 앞, 횡단보도 진입 단차, 상태 신고됨, 자세히 보기" [ref=e80] [cursor=pointer]:
+            - img [ref=e82]
+            - generic [ref=e84]:
+              - strong [ref=e85]: 횡단보도 진입 단차
+              - generic [ref=e86]: 둔산로 100 앞
+              - generic [ref=e87]: 단차·턱 · 신고됨
+            - img [ref=e89]
+          - button "시청역 3번 출구 부근, 짧고 가파른 보도 경사, 상태 처리완료, 자세히 보기" [ref=e91] [cursor=pointer]:
+            - img [ref=e93]
+            - generic [ref=e95]:
+              - strong [ref=e96]: 짧고 가파른 보도 경사
+              - generic [ref=e97]: 시청역 3번 출구 부근
+              - generic [ref=e98]: 급경사 · 처리완료
+            - img [ref=e100]
+          - button "시청역 5번 출구 부근, 공사 펜스로 좁아진 보도, 상태 미신고, 자세히 보기" [ref=e102] [cursor=pointer]:
+            - img [ref=e104]
+            - generic [ref=e106]:
+              - strong [ref=e107]: 공사 펜스로 좁아진 보도
+              - generic [ref=e108]: 시청역 5번 출구 부근
+              - generic [ref=e109]: 좁은 보도 · 미신고
+            - img [ref=e111]
+          - button "대전 서구 시험로, 가로수 뿌리 융기, 상태 신고됨, 자세히 보기" [ref=e113] [cursor=pointer]:
+            - img [ref=e115]
+            - generic [ref=e117]:
+              - strong [ref=e118]: 가로수 뿌리 융기
+              - generic [ref=e119]: 대전 서구 시험로
+              - generic [ref=e120]: 가로수 뿌리 · 신고됨
+            - img [ref=e122]
+        - generic [ref=e124]:
+          - img [ref=e125]
+          - generic [ref=e127]: 위험 지점은 예시 데이터예요. 새 제보는 이 브라우저에만 저장돼요.
+        - generic [ref=e128]:
+          - button "보행 모드 열기" [ref=e129] [cursor=pointer]:
+            - img [ref=e130]
+            - text: 보행 모드 열기
+            - generic [ref=e133]: 음성 안내
+          - button "위험 지점 신고문 만들기" [ref=e134] [cursor=pointer]:
+            - img [ref=e135]
+            - text: 안전신문고 신고문 만들기
+        - generic [ref=e137]:
+          - img [ref=e138]
+          - generic [ref=e141]: 보조 정보예요. 지팡이·안내견을 대신할 수 없어요.
+    - region "대전 보행 위험 지점 지도" [ref=e143]:
+      - generic [ref=e144]:
+        - application "카카오 지도" [ref=e145]
+        - alert:
+          - generic:
+            - img
+          - strong:
+            - text: 지도를 불러오지 못했습니다.
+            - text: 잠시 후 다시 시도해 주세요.
+          - button "카카오 지도 다시 불러오기" [ref=e146] [cursor=pointer]: 다시 시도

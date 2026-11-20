@@ -1,0 +1,411 @@
+[      55ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[     442ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[    1037ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://7l9tfpabv8yrk3wn.jitda.io/:0
+[    1330ms] [WARNING] layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[    1332ms] [WARNING] layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[    1335ms] [WARNING] layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[  751853ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340675652:896:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  751856ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340675652:896:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  751857ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340675652:40:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[  751867ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340675652:896:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[  788651ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340712318:902:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  788652ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340712318:902:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  788652ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340712318:40:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[  788652ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340712318:902:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[  980045ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340903601:909:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  980047ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340903601:909:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[  980046ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340903601:47:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[  980047ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793340903601:909:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1143455ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341067174:912:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1143455ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341067174:912:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1143455ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341067174:47:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1143456ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341067174:912:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1202150ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341125797:938:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1202151ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341125797:938:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1202151ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341125797:47:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1202152ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341125797:938:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1244644ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341168447:0
+[ 1244645ms] [ERROR] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1565954ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341489621:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1565955ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341489621:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1565955ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341489621:47:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1565956ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341489621:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1684878ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341608302:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1684879ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341608302:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1684879ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341608302:47:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1684879ms] ReferenceError: walkUserType is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341608302:929:19)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1851245ms] ReferenceError: readWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341774842:54:69)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1851246ms] ReferenceError: readWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341774842:54:69)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1851246ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341774842:29:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1851246ms] ReferenceError: readWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341774842:54:69)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1868452ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341792099:414:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1868454ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341792099:414:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1868453ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341792099:29:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1868454ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341792099:414:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 1937243ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341860910:407:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1937244ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341860910:407:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:3199:32)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15982:5)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+[ 1937244ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341860910:29:71)
+    at MapProvider (https://7l9tfpabv8yrk3wn.jitda.io/src/map/MapContext.tsx:16:31)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1
+[ 1937245ms] ReferenceError: selectedWalkUserTypes is not defined
+    at App (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1793341860910:407:30)
+    at renderWithHooks (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:9620:19)
+    at mountIndeterminateComponent (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:12353:12)
+    at beginWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:13081:41)
+    at beginWork$1 (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15974:12)
+    at performUnitOfWork (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15557:12)
+    at workLoopSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15506:36)
+    at renderRootSync (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15489:6)
+    at recoverFromConcurrentError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15182:21)
+    at performSyncWorkOnRoot (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=f72ea9d9:15293:19)
+[ 2190532ms] [WARNING] layers[highway-shield-non-us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[ 2190535ms] [WARNING] layers[highway-shield-us-interstate].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6
+[ 2190540ms] [WARNING] layers[road_shield_us].filter[1]: Expected value to be of type number, but found null instead. Falling back to false. @ https://7l9tfpabv8yrk3wn.jitda.io/node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs?worker_file&type=module:6

@@ -1,0 +1,15 @@
+[     151ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[     801ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[   84683ms] [INFO] [preview-bridge] v1.1.0 @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1148
+[   84883ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ https://7l9tfpabv8yrk3wn.jitda.io/__preview-bridge.js:1188
+[  122386ms] TypeError: center.getLat is not a function
+    at addHazard (https://7l9tfpabv8yrk3wn.jitda.io/src/App.tsx?t=1792738154802:75:16)
+    at HTMLUnknownElement.callCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3140:11)
+    at Object.invokeGuardedCallbackDev (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3160:14)
+    at invokeGuardedCallback (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3199:32)
+    at invokeGuardedCallbackAndCatchFirstError (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:3212:26)
+    at executeDispatch (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6124:4)
+    at processDispatchQueueItemsInOrder (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6138:5)
+    at processDispatchQueue (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6146:5)
+    at dispatchEventsForPlugins (https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6154:4)
+    at https://7l9tfpabv8yrk3wn.jitda.io/node_modules/.vite/deps/react-dom-BcpFQchw.js?v=14241175:6246:12
