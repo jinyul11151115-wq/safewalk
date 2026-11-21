@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import {
-  Accessibility, AlertTriangle, ArrowRight, Check, Copy, FileClock,
+  Accessibility, AlertTriangle, ArrowRight, Check, Copy, FileClock, PanelLeftClose, PanelLeftOpen,
   Footprints, Info, MapPin, Search, Settings2, ShieldCheck, Volume2, X,
 } from 'lucide-react'
 import { Button } from './components/ui/button'
@@ -53,6 +53,7 @@ function App() {
   const [reportLocation, setReportLocation] = useState<Coordinates | null>({ lat: 36.3504, lng: 127.3845 })
   const [reportStep, setReportStep] = useState(1)
   const [reportMapHeight, setReportMapHeight] = useState(112)
+  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false)
   const [positionAdjusted, setPositionAdjusted] = useState(false)
   const [demoLoggedIn, setDemoLoggedIn] = useState(() => Boolean(localStorage.getItem('safe-walk-demo-user')))
   const [toast, setToast] = useState('')
@@ -482,8 +483,8 @@ function App() {
 
       {moving && <div className="wake-warning-banner" role="note">화면 잠금·앱 전환 중 위치 안내가 멈출 수 있어요. 돌아오면 새 위치를 확인한 뒤 다시 안내합니다.</div>}
 
-      <div className={`workspace ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`} style={activeTab === 'report' ? { '--report-map-height': `${reportMapHeight}px` } as CSSProperties : undefined}>
-        <aside className={`side-panel ${activeTab === 'report' ? 'report-side-panel' : ''} ${activeTab === 'safety' ? 'safety-side-panel' : ''} ${activeTab === 'my-reports' ? 'my-reports-side-panel' : ''} ${activeTab === 'walk' ? 'walk-side-panel' : ''}`} aria-label="안심보행 탭 내용">
+      <div className={`workspace ${activeTab === 'map' && desktopSidebarCollapsed ? 'desktop-sidebar-collapsed' : ''} ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`} style={activeTab === 'report' ? { '--report-map-height': `${reportMapHeight}px` } as CSSProperties : undefined}>
+        <aside id="main-map-sidebar" className={`side-panel ${activeTab === 'report' ? 'report-side-panel' : ''} ${activeTab === 'safety' ? 'safety-side-panel' : ''} ${activeTab === 'my-reports' ? 'my-reports-side-panel' : ''} ${activeTab === 'walk' ? 'walk-side-panel' : ''}`} aria-label="안심보행 탭 내용">
           <div className={`map-side-content ${activeTab === 'map' ? 'tab-content-active' : ''}`}>
             <div className="panel-heading">
               <div><p className="eyebrow">대전 시범 지도</p><h1 tabIndex={-1}>천천히, 안전하게.</h1></div>
@@ -561,6 +562,14 @@ function App() {
         </aside>
 
         <div className={`map-workspace ${activeTab === 'report' || activeTab === 'safety' ? 'mini-map-workspace' : ''}`}>
+          {activeTab === 'map' && <button
+            type="button"
+            className={`desktop-sidebar-toggle ${desktopSidebarCollapsed ? 'is-collapsed' : ''}`}
+            aria-label={desktopSidebarCollapsed ? '왼쪽 메뉴 열기' : '왼쪽 메뉴 닫기'}
+            aria-expanded={!desktopSidebarCollapsed}
+            aria-controls="main-map-sidebar"
+            onClick={() => setDesktopSidebarCollapsed((collapsed) => !collapsed)}
+          >{desktopSidebarCollapsed ? <PanelLeftOpen size={20} /> : <PanelLeftClose size={20} />}</button>}
           {activeTab === 'report' && <div
             className="report-map-resizer"
             role="separator"
