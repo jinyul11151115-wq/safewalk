@@ -216,11 +216,14 @@ export function MapPanel({
               {(['전체 상태', ...hazardStatuses] as const).map((status) => <button key={status} type="button" className={`map-filter-chip status-chip ${statusFilter === status ? 'active' : ''}`} aria-pressed={statusFilter === status} aria-label={`${status} 위험 보기`} onClick={() => onStatusFilter(status)}><i className={`state-dot state-${status}`} />{status}</button>)}
             </div>
           </div>
-          <Button variant="secondary" className="add-hazard-map-button" aria-label="새 위험 지점 제보" onClick={onAddHazard}><Plus size={17} /> 위험 제보</Button>
-          <div className="map-controls">
+          <div className="map-actions-toolbar" role="group" aria-label="지도 도구">
+            <Button variant="secondary" className="add-hazard-map-button" aria-label="새 위험 지점 제보" onClick={onAddHazard}><Plus size={17} /> 위험 제보</Button>
             {!testMode && <Button variant="secondary" className="location-action" aria-label="내 위치로 이동" onClick={goToMyLocation}><LocateFixed size={19} /><span>내 위치</span></Button>}
-            <Button variant="secondary" size="icon" aria-label="지도 확대" onClick={() => map?.zoomIn()}><Plus size={19} /></Button>
-            <Button variant="secondary" size="icon" aria-label="지도 축소" onClick={() => map?.zoomOut()}><Minus size={19} /></Button>
+            <Button type="button" variant="secondary" className="map-sr-list-button" aria-label={`지도에 표시된 위험 지점 목록 ${screenReaderListOpen ? '닫기' : '열기'}`} aria-expanded={screenReaderListOpen} aria-controls="map-screen-reader-hazards" onClick={() => setScreenReaderListOpen((open) => !open)}><List size={17} />목록</Button>
+            <div className="map-zoom-controls" role="group" aria-label="지도 확대 및 축소">
+              <Button variant="secondary" size="icon" aria-label="지도 확대" onClick={() => map?.zoomIn()}><Plus size={19} /></Button>
+              <Button variant="secondary" size="icon" aria-label="지도 축소" onClick={() => map?.zoomOut()}><Minus size={19} /></Button>
+            </div>
           </div>
           {!miniMode && testMode && <p className="map-test-mode-badge" role="status" aria-live="polite">테스트 위치 모드</p>}
           {!miniMode && !testMode && locationPermission === 'prompt' && <p className="location-permission-hint" role="note">현재 위치를 쓰려면 “내 위치”를 누르고 허용해 주세요.</p>}
@@ -235,7 +238,6 @@ export function MapPanel({
         </>}
 
         {!miniMode && !walkMode && <>
-          <Button type="button" variant="secondary" className="map-sr-list-button" aria-label={`지도에 표시된 위험 지점 목록 ${screenReaderListOpen ? '닫기' : '열기'}`} aria-expanded={screenReaderListOpen} aria-controls="map-screen-reader-hazards" onClick={() => setScreenReaderListOpen((open) => !open)}><List size={17} />목록</Button>
           <section id="map-screen-reader-hazards" className="map-screen-reader-list" role="region" aria-label="지도에 표시된 위험 지점 목록" hidden={!screenReaderListOpen}>
             <div className="map-screen-reader-list-heading"><strong>지도에 표시된 위험 지점</strong><button type="button" aria-label="위험 지점 목록 패널 닫기" onClick={() => setScreenReaderListOpen(false)}><X size={18} /></button></div>
             <ul>{listHazards.map((hazard) => {

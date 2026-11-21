@@ -433,3 +433,27 @@ summary { min-height: 48px; }
   .desktop-sidebar-toggle:focus-visible { outline: 4px solid #a54800; outline-offset: 2px; }
   .desktop-sidebar-toggle.is-collapsed { transform: translateY(-50%); border-radius: 0 11px 11px 0; }
 }
+
+/* Keep map actions together below the filter panel instead of stacking
+   independent absolute-positioned controls in the same corner. */
+.map-actions-toolbar { position: absolute; z-index: 5; top: 170px; right: 16px; display: grid; width: 142px; gap: 8px; padding: 9px; border: 1px solid #dfe5de; border-radius: 13px; background: #fffffff2; box-shadow: 0 4px 16px #25372a22; }
+.map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { position: static; inset: auto; width: 100%; min-width: 0; min-height: 46px; justify-content: flex-start; padding: 0 11px; transform: none; box-shadow: none; white-space: nowrap; }
+.map-actions-toolbar .map-zoom-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding-top: 7px; border-top: 1px solid #e3e8e2; }
+.map-actions-toolbar .map-zoom-controls .button { width: 100%; min-height: 44px; }
+.map-screen-reader-list { top: 430px; right: 16px; }
+:root[data-theme="dark"] .map-actions-toolbar { border-color: #465449; background: #202b23f2; }
+:root[data-theme="dark"] .map-actions-toolbar .button { border-color: #4b5b4f; background: #29372e; color: #edf3ee; }
+@media (max-width: 850px) {
+  .map-actions-toolbar { top: 142px; right: 12px; width: auto; min-width: 0; grid-template-columns: repeat(3, auto); align-items: center; gap: 6px; padding: 6px; }
+  .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { width: auto; min-width: 44px; min-height: 44px; justify-content: center; padding: 0 9px; }
+  .map-actions-toolbar .map-zoom-controls { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 6px; padding-top: 6px; border-top: 1px solid #e3e8e2; }
+  .map-actions-toolbar .map-zoom-controls .button { min-height: 42px; }
+  .map-screen-reader-list { top: 276px; right: 10px; left: auto; width: min(360px, calc(100% - 20px)); max-height: min(42vh, 360px); }
+}
+@media (max-width: 440px) {
+  .map-actions-toolbar { top: 132px; right: 10px; grid-template-columns: repeat(3, 44px); gap: 5px; padding: 5px; }
+  .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { width: 44px; min-width: 44px; padding: 0; }
+  .map-actions-toolbar > .button span, .map-actions-toolbar .location-action span { display: none; }
+  .map-actions-toolbar .map-zoom-controls .button { width: 100%; }
+  .map-screen-reader-list { top: 270px; right: 8px; width: min(340px, calc(100% - 16px)); }
+}
