@@ -568,7 +568,7 @@ function App() {
         </aside>
 
         <div className={`map-workspace ${activeTab === 'report' || activeTab === 'safety' ? 'mini-map-workspace' : ''} ${activeTab === 'report' && reportMapOpen ? 'report-location-map-open' : ''}`} role={activeTab === 'report' && reportMapOpen ? 'dialog' : undefined} aria-modal={activeTab === 'report' && reportMapOpen ? true : undefined} aria-label={activeTab === 'report' && reportMapOpen ? '제보 위치 선택 지도' : undefined} onKeyDown={(event) => { if (event.key === 'Escape' && reportMapOpen) setReportMapOpen(false) }}>
-          {activeTab === 'report' && reportMapOpen && <div className="report-location-map-toolbar"><div><strong>제보 위치 선택</strong><span>지도를 움직이거나 핀을 끌어 위치를 맞춰주세요.</span></div><Button variant="primary" aria-label="위치 표시 완료하고 제보로 돌아가기" onClick={() => setReportMapOpen(false)}><Check size={18} />위치 표시 완료</Button></div>}
+          {activeTab === 'report' && reportMapOpen && <><div className="report-location-map-toolbar"><div><strong>제보 위치 선택</strong><span>지도를 움직여 가운데 핀을 위험 위치에 맞춰주세요.</span></div><Button variant="primary" aria-label="위치 표시 완료하고 제보로 돌아가기" onClick={() => setReportMapOpen(false)}><Check size={18} />위치 표시 완료</Button></div><div className="report-location-center-pin" aria-hidden="true"><MapPin size={42} fill="currentColor" /><span /></div><div className="report-location-coordinates" role="status" aria-live="polite">선택 위치 · {reportLocation?.lat.toFixed(5) ?? '36.35040'}, {reportLocation?.lng.toFixed(5) ?? '127.38450'}</div></>}
           {activeTab === 'map' && <button
             type="button"
             className={`desktop-sidebar-toggle ${desktopSidebarCollapsed ? 'is-collapsed' : ''}`}
@@ -608,6 +608,7 @@ function App() {
             onLocationError={(message) => setToast(message || '현재 위치를 확인하지 못했어요. 위치 권한을 확인해 주세요.')}
             miniMode={activeTab === 'report' || activeTab === 'safety'}
             dragPinEnabled={activeTab === 'report' && demoLoggedIn && reportStep === 1}
+            locationPickMode={activeTab === 'report' && reportMapOpen}
             reportLocation={reportLocation}
             onReportLocationChange={handleMapPinMove}
             testMode={testMode && activeTab === 'map'}

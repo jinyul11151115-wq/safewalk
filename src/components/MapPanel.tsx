@@ -18,6 +18,7 @@ type Props = {
   onLocationError: (message?: string) => void
   miniMode: boolean
   dragPinEnabled: boolean
+  locationPickMode: boolean
   reportLocation: Coordinates | null
   onReportLocationChange: (coordinates: Coordinates) => void
   testMode: boolean
@@ -37,7 +38,7 @@ function isShown(hazard: Hazard, ids: string[] | null, typeFilter: Props['typeFi
 export function MapPanel({
   hazards, visibleIds, typeFilter, statusFilter, onSelect,
   onTypeFilter, onStatusFilter, onVisibleIds, onAddHazard, onLocationError,
-  miniMode, dragPinEnabled, reportLocation, onReportLocationChange,
+  miniMode, dragPinEnabled, locationPickMode, reportLocation, onReportLocationChange,
   testMode, testLocation, onTestLocation, mapVisible, walkMode,
 }: Props) {
   const { map, mapStatus, mapError, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
@@ -170,7 +171,24 @@ export function MapPanel({
   }, [hazards, map, miniMode, statusFilter, typeFilter, visibleIds, walkMode])
 
   useEffect(() => {
+    if (!map || mapStatus !== 'ready' || !locationPickMode) return
+    const coordinates = reportLocation ?? { lat: 36.3504, lng: 127.3845 }
+    map.easeTo({ center: [coordinates.lng, coordinates.lat], duration: 300 })
+    const updatePickedLocation = () => {
+      const center = map.getCenter()
+      onReportLocationChange({ lat: center.lat, lng: center.lng })
+    }
+    map.on('moveend', updatePickedLocation)
+    return () => map.off('moveend', updatePickedLocation)
+  }, [locationPickMode, map, mapStatus, onReportLocationChange])
+
+  useEffect(() => {
     if (!map || mapStatus !== 'ready') return
+    if (locationPickMode) {
+      dragMarkerRef.current?.remove()
+      dragMarkerRef.current = null
+      return
+    }
     if (!miniMode || !dragPinEnabled) {
       dragMarkerRef.current?.remove()
       dragMarkerRef.current = null
@@ -194,7 +212,7 @@ export function MapPanel({
     }
     dragMarkerRef.current.setLngLat([coordinates.lng, coordinates.lat])
     map.easeTo({ center: [coordinates.lng, coordinates.lat], duration: 400 })
-  }, [dragPinEnabled, map, mapStatus, miniMode, onReportLocationChange, reportLocation])
+  }, [dragPinEnabled, locationPickMode, map, mapStatus, miniMode, onReportLocationChange, reportLocation])
 
   useEffect(() => {
     if (!map || mapStatus !== 'ready' || !mapVisible) return

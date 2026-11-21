@@ -493,6 +493,10 @@ summary { min-height: 48px; }
 .report-location-map-toolbar strong { color: #25372b; font-size: 16px; }
 .report-location-map-toolbar span { color: #5d6c61; font-size: 12px; line-height: 1.4; }
 .report-location-map-toolbar .button { flex: 0 0 auto; min-height: 48px; }
+.report-location-center-pin { position: absolute; z-index: 18; top: 50%; left: 50%; display: grid; justify-items: center; transform: translate(-50%, -100%); color: #a83e2c; filter: drop-shadow(0 2px 3px #17261f55); pointer-events: none; }
+.report-location-center-pin > svg { stroke: white; stroke-width: 1.5; }
+.report-location-center-pin > span { width: 9px; height: 5px; margin-top: -2px; border-radius: 50%; background: #53291f; box-shadow: 0 1px 2px #1118; }
+.report-location-coordinates { position: absolute; z-index: 19; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; max-width: calc(100% - 24px); padding: 9px 13px; transform: translateX(-50%); border: 1px solid #d9e2d9; border-radius: 999px; background: #fffffff2; color: #35473a; box-shadow: 0 3px 14px #1d302522; font-size: 12px; font-weight: 750; white-space: nowrap; pointer-events: none; }
 @media (max-width: 440px) {
   .report-location-map-toolbar { min-height: calc(72px + env(safe-area-inset-top, 0px)); gap: 8px; padding: calc(8px + env(safe-area-inset-top, 0px)) max(9px, env(safe-area-inset-right)) 8px max(12px, env(safe-area-inset-left)); }
   .report-location-map-toolbar strong { font-size: 14px; }

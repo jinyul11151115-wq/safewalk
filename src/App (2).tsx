@@ -518,6 +518,7 @@ function App() {
             onLocationError={(message) => setToast(message || '현재 위치를 확인하지 못했어요. 위치 권한을 확인해 주세요.')}
             miniMode={activeTab === 'report' || activeTab === 'safety'}
             dragPinEnabled={activeTab === 'report' && demoLoggedIn && reportStep === 1}
+            locationPickMode={false}
             reportLocation={reportLocation}
             onReportLocationChange={handleMapPinMove}
             testMode={testMode && activeTab === 'map'}
