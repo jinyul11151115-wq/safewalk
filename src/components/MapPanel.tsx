@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
-import { Marker } from 'maplibre-gl'
 import { Check, ChevronDown, Crosshair, Filter, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
 import { Button } from './ui/button'
-import { useMapContext, type Coordinates } from '../map/MapContext'
+import { KakaoMarker, useMapContext, type Coordinates } from '../map/MapContext'
 import { hazardStatusLabel, hazardStatuses, hazardTypeGlyphs, hazardTypeLabels, hazardTypes, type Hazard, type HazardStatus, type HazardType } from '../map/hazards'
 import { haversineMeters } from '../map/walkSafety'
 
@@ -41,13 +40,13 @@ export function MapPanel({
   miniMode, dragPinEnabled, reportLocation, onReportLocationChange,
   testMode, testLocation, onTestLocation, mapVisible, walkMode,
 }: Props) {
-  const { map, mapStatus, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
+  const { map, mapStatus, mapError, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
   const [screenReaderListOpen, setScreenReaderListOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const suppressFilterClickUntilRef = useRef(0)
-  const markerRefs = useRef<Map<string, Marker>>(new Map())
-  const dragMarkerRef = useRef<Marker | null>(null)
-  const testMarkerRef = useRef<Marker | null>(null)
+  const markerRefs = useRef<Map<string, KakaoMarker>>(new Map())
+  const dragMarkerRef = useRef<KakaoMarker | null>(null)
+  const testMarkerRef = useRef<KakaoMarker | null>(null)
 
   const mapCenter = (testMode && testLocation)
     ? testLocation
@@ -58,7 +57,7 @@ export function MapPanel({
 
   useEffect(() => {
     if (mapStatus !== 'ready' || !map) return
-    const markers = new Map<string, Marker>()
+    const markers = new Map<string, KakaoMarker>()
     hazards.forEach((hazard) => {
       const element = document.createElement('button')
       element.type = 'button'
@@ -80,7 +79,7 @@ export function MapPanel({
         event.stopPropagation()
         onSelect(hazard)
       })
-      const marker = new Marker({ element, anchor: 'bottom' }).setLngLat([hazard.lng, hazard.lat])
+      const marker = new KakaoMarker({ element, anchor: 'bottom' }).setLngLat([hazard.lng, hazard.lat])
       markers.set(hazard.id, marker)
     })
     markerRefs.current = markers
@@ -136,7 +135,7 @@ export function MapPanel({
       element.className = 'report-pin'
       element.setAttribute('role', 'img')
       element.setAttribute('aria-label', '드래그해서 제보 위치를 보정할 수 있는 핀')
-      dragMarkerRef.current = new Marker({ element, draggable: true })
+      dragMarkerRef.current = new KakaoMarker({ element, draggable: true })
         .setLngLat([coordinates.lng, coordinates.lat])
         .addTo(map)
       dragMarkerRef.current.on('dragend', () => {
@@ -168,7 +167,7 @@ export function MapPanel({
       element.className = 'current-location-marker test-location-marker'
       element.setAttribute('role', 'img')
       element.setAttribute('aria-label', '테스트 내 위치')
-      testMarkerRef.current = new Marker({ element })
+      testMarkerRef.current = new KakaoMarker({ element })
         .setLngLat([testLocation.lng, testLocation.lat])
         .addTo(map)
     } else {
@@ -236,7 +235,7 @@ export function MapPanel({
   return (
     <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''} ${filtersOpen ? 'map-filters-open' : ''}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
       <div className="map-canvas">
-        <div className="maplibre-map" ref={mapHostRef} aria-label="OpenFreeMap 지도" role="application" />
+        <div className="kakao-map" ref={mapHostRef} aria-label="카카오맵 보행 위험 지도" role="application" />
 
         {mapStatus === 'ready' && !miniMode && !walkMode && <>
           <section className={`map-filter-bar ${filtersOpen ? 'filters-open' : 'filters-collapsed'}`} aria-label="지도 위험 지점 필터">
@@ -296,7 +295,7 @@ export function MapPanel({
         </>}
 
         {mapStatus === 'loading' && <div className="map-state" role="status" aria-live="polite" aria-atomic="true"><div className="map-spinner" aria-hidden="true" /><span>지도를 불러오고 있어요</span></div>}
-        {mapStatus === 'error' && <div className="map-state map-error" role="alert" aria-live="assertive" aria-atomic="true"><div className="map-error-icon" aria-hidden="true"><Crosshair size={24} /></div><strong>지도를 불러오지 못했습니다.<br />잠시 후 다시 시도해 주세요.</strong><Button variant="primary" aria-label="지도 다시 불러오기" onClick={retryMap}>다시 시도</Button></div>}
+        {mapStatus === 'error' && <div className="map-state map-error" role="alert" aria-live="assertive" aria-atomic="true"><div className="map-error-icon" aria-hidden="true"><Crosshair size={24} /></div><strong>지도를 불러오지 못했습니다.</strong><span className="map-error-detail">{mapError}</span><Button variant="primary" aria-label="지도 다시 불러오기" onClick={retryMap}>다시 시도</Button></div>}
       </div>
     </section>
   )

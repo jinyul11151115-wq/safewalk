@@ -483,6 +483,8 @@ summary { min-height: 48px; }
 /* Keep map actions together below the filter panel instead of stacking
    independent absolute-positioned controls in the same corner. */
 .map-actions-toolbar { position: absolute; z-index: 5; top: 170px; right: 16px; display: grid; width: 142px; gap: 8px; padding: 9px; border: 1px solid #dfe5de; border-radius: 13px; background: #fffffff2; box-shadow: 0 4px 16px #25372a22; }
+.kakao-map { position: absolute; inset: 0; width: 100%; height: 100%; background: #edf0e8; }
+.map-error-detail { max-width: min(440px, calc(100% - 32px)); color: #59675d; font-size: 13px; font-weight: 500; line-height: 1.6; }
 .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { position: static; inset: auto; width: 100%; min-width: 0; min-height: 46px; justify-content: flex-start; padding: 0 11px; transform: none; box-shadow: none; white-space: nowrap; }
 .map-actions-toolbar .map-zoom-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding-top: 7px; border-top: 1px solid #e3e8e2; }
 .map-actions-toolbar .map-zoom-controls .button { width: 100%; min-height: 44px; }
