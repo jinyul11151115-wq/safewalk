@@ -85,11 +85,12 @@ type Props = {
   onReportLocationChange: (location: Coordinates) => void
   positionAdjusted: boolean
   onStepChange: (step: number) => void
+  onOpenLocationMap?: () => void
   onAuthChange: (loggedIn: boolean) => void
   onClose: () => void
 }
 
-export function ReportWizard({ active, hazards, onHazardsChange, reportLocation, onReportLocationChange, positionAdjusted, onStepChange, onAuthChange, onClose }: Props) {
+export function ReportWizard({ active, hazards, onHazardsChange, reportLocation, onReportLocationChange, positionAdjusted, onStepChange, onOpenLocationMap, onAuthChange, onClose }: Props) {
   const { currentLocation, moveToMyLocation } = useMapContext()
   const [userEmail, setUserEmail] = useState(() => localStorage.getItem('safe-walk-demo-user') ?? '')
   const [emailInput, setEmailInput] = useState('')
@@ -117,7 +118,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
     }
   }, [currentLocation, onReportLocationChange, positionAdjusted])
 
-  useEffect(() => onStepChange(step), [onStepChange, step])
+  useEffect(() => onStepChange(view === 'form' ? step : 0), [onStepChange, step, view])
 
   useEffect(() => {
     if (!active) return
@@ -141,6 +142,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
 
   async function refreshGps() {
     setError('')
+    onOpenLocationMap?.()
     const position = await moveToMyLocation()
     if (!position) {
       setError('현재 위치를 확인하지 못했어요. 지도를 움직여 핀을 맞춰주세요.')

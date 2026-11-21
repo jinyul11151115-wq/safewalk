@@ -53,6 +53,7 @@ function App() {
   const [reportLocation, setReportLocation] = useState<Coordinates | null>({ lat: 36.3504, lng: 127.3845 })
   const [reportStep, setReportStep] = useState(1)
   const [reportMapHeight, setReportMapHeight] = useState(112)
+  const [reportMapOpen, setReportMapOpen] = useState(false)
   const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false)
   const [positionAdjusted, setPositionAdjusted] = useState(false)
   const [demoLoggedIn, setDemoLoggedIn] = useState(() => Boolean(localStorage.getItem('safe-walk-demo-user')))
@@ -156,6 +157,10 @@ function App() {
       window.clearInterval(fallbackRefresh)
     }
   }, [])
+
+  useEffect(() => {
+    if (activeTab !== 'report') setReportMapOpen(false)
+  }, [activeTab])
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: dark)')
@@ -483,7 +488,7 @@ function App() {
 
       {moving && <div className="wake-warning-banner" role="note">화면 잠금·앱 전환 중 위치 안내가 멈출 수 있어요. 돌아오면 새 위치를 확인한 뒤 다시 안내합니다.</div>}
 
-      <div className={`workspace ${activeTab === 'map' && desktopSidebarCollapsed ? 'desktop-sidebar-collapsed' : ''} ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'report' && (!demoLoggedIn || reportStep !== 1) ? 'report-map-hidden' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`} style={activeTab === 'report' ? { '--report-map-height': `${reportMapHeight}px` } as CSSProperties : undefined}>
+      <div className={`workspace ${activeTab === 'map' && desktopSidebarCollapsed ? 'desktop-sidebar-collapsed' : ''} ${activeTab === 'report' ? 'report-mode' : ''} ${activeTab === 'report' && (!demoLoggedIn || reportStep !== 1 || !reportMapOpen) ? 'report-map-hidden' : ''} ${activeTab === 'safety' ? 'safety-mode' : ''} ${activeTab === 'my-reports' ? 'my-reports-mode' : ''} ${activeTab === 'walk' ? 'walk-mode' : ''}`} style={activeTab === 'report' ? { '--report-map-height': `${reportMapHeight}px` } as CSSProperties : undefined}>
         <aside id="main-map-sidebar" className={`side-panel ${activeTab === 'report' ? 'report-side-panel' : ''} ${activeTab === 'safety' ? 'safety-side-panel' : ''} ${activeTab === 'my-reports' ? 'my-reports-side-panel' : ''} ${activeTab === 'walk' ? 'walk-side-panel' : ''}`} aria-label="안심보행 탭 내용">
           <div className={`map-side-content ${activeTab === 'map' ? 'tab-content-active' : ''}`}>
             <div className="panel-heading">
@@ -516,7 +521,8 @@ function App() {
             reportLocation={reportLocation}
             onReportLocationChange={handleGpsLocation}
             positionAdjusted={positionAdjusted}
-            onStepChange={setReportStep}
+            onStepChange={(step) => { setReportStep(step); if (step !== 1) setReportMapOpen(false) }}
+            onOpenLocationMap={() => setReportMapOpen(true)}
             onAuthChange={handleDemoAuthChange}
             onClose={() => setActiveTab('map')}
             />
