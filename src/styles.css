@@ -95,7 +95,12 @@ button { color: inherit; }
 .filters-open .map-filter-toggle > svg:last-child { transform: rotate(180deg); }
 .map-filter-options { display: grid; gap: 7px; padding: 0 9px 9px; }
 .map-filter-options[hidden] { display: none; }
-.map-filter-options .map-filter-row { max-width: 100%; }
+.map-filter-options .map-filter-row { display: grid; grid-template-columns: 33px minmax(0, 1fr); max-width: 100%; min-width: 0; overflow: hidden; }
+.map-filter-chips { display: flex; min-width: 0; gap: 5px; overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #91a799 transparent; }
+.map-filter-chips .map-filter-chip { flex: 0 0 auto; scroll-snap-align: start; }
+.map-filter-chips::-webkit-scrollbar { height: 4px; }
+.map-filter-chips::-webkit-scrollbar-thumb { border-radius: 4px; background: #91a799; }
+.map-filter-swipe-hint { display: none; margin: 0 0 0 33px; color: #5b6b60; font-size: 10px; line-height: 1.4; }
 .map-filter-options .map-filter-chip { flex: 0 0 auto; }
 .filters-collapsed.map-filter-bar { box-shadow: 0 2px 10px #2636291c; }
 :root[data-theme="dark"] .map-filter-bar { border-color: #465449; background: #202b23f2; }
@@ -106,7 +111,8 @@ button { color: inherit; }
   .map-filter-toggle > span { font-size: 12px; }
   .map-filter-toggle small { font-size: 10px; }
   .map-filter-options { max-height: min(40vh, 290px); overflow-y: auto; }
-  .map-filter-options .map-filter-row { flex-wrap: nowrap; }
+  .map-filter-options .map-filter-row { grid-template-columns: 29px minmax(0, 1fr); }
+  .map-filter-options .map-filter-swipe-hint { display: block; }
 }
 @media (max-width: 440px) {
   .map-filter-bar { top: 10px; left: 10px; width: min(330px, calc(100% - 20px)); }
@@ -114,7 +120,9 @@ button { color: inherit; }
   .map-filter-toggle > span { font-size: 11px; }
   .map-filter-toggle small { font-size: 9px; }
   .map-filter-options { max-height: 34svh; padding: 0 6px 7px; }
+  .map-filter-options .map-filter-row { grid-template-columns: 24px minmax(0, 1fr); }
   .map-filter-options .map-filter-chip { min-height: 40px; padding-inline: 8px; font-size: 10px; }
+  .map-filter-swipe-hint { margin-left: 24px; font-size: 9px; }
 }
 
 .app-tabs { display: flex; flex: 0 0 54px; align-items: center; justify-content: center; gap: 6px; border-bottom: 1px solid #e5e9e3; background: #fbfcf9; }.app-tabs button { display: inline-flex; min-width: 122px; min-height: 44px; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: #5e6b62; font-size: 14px; font-weight: 700; cursor: pointer; }.app-tabs button.active { border-color: #c9ddcf; background: #eaf3ec; color: #155b3e; }.app-tabs button:disabled { opacity: .6; cursor: not-allowed; }

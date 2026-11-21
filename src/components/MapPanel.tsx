@@ -215,14 +215,19 @@ export function MapPanel({
               <ChevronDown size={18} aria-hidden="true" />
             </button>
             <div id="map-filter-options" className="map-filter-options" hidden={!filtersOpen}>
-            <div className="map-filter-row" role="group" aria-label="유형별 위험 필터">
-              <span className="map-filter-heading">유형</span>
-              {(['전체 유형', ...hazardTypes] as const).map((type) => <button key={type} type="button" className={`map-filter-chip ${typeFilter === type ? 'active' : ''}`} aria-pressed={typeFilter === type} aria-label={`${type} 위험 보기`} onClick={() => onTypeFilter(type)}>{type}</button>)}
-            </div>
-            <div className="map-filter-row" role="group" aria-label="상태별 위험 필터">
-              <span className="map-filter-heading">상태</span>
-              {(['전체 상태', ...hazardStatuses] as const).map((status) => <button key={status} type="button" className={`map-filter-chip status-chip ${statusFilter === status ? 'active' : ''}`} aria-pressed={statusFilter === status} aria-label={`${status} 위험 보기`} onClick={() => onStatusFilter(status)}><i className={`state-dot state-${status}`} />{status}</button>)}
-            </div>
+              <div className="map-filter-row" role="group" aria-label="유형별 위험 필터">
+                <span className="map-filter-heading">유형</span>
+                <div className="map-filter-chips">
+                  {(['전체 유형', ...hazardTypes] as const).map((type) => <button key={type} type="button" className={`map-filter-chip ${typeFilter === type ? 'active' : ''}`} aria-pressed={typeFilter === type} aria-label={`${type} 위험 보기`} onClick={() => onTypeFilter(type)}>{type}</button>)}
+                </div>
+              </div>
+              <div className="map-filter-row" role="group" aria-label="상태별 위험 필터">
+                <span className="map-filter-heading">상태</span>
+                <div className="map-filter-chips">
+                  {(['전체 상태', ...hazardStatuses] as const).map((status) => <button key={status} type="button" className={`map-filter-chip status-chip ${statusFilter === status ? 'active' : ''}`} aria-pressed={statusFilter === status} aria-label={`${status} 위험 보기`} onClick={() => onStatusFilter(status)}><i className={`state-dot state-${status}`} />{status}</button>)}
+                </div>
+              </div>
+              <p className="map-filter-swipe-hint">항목을 좌우로 밀어 더 볼 수 있어요</p>
             </div>
           </section>
           <div className="map-actions-toolbar" role="group" aria-label="지도 도구">
