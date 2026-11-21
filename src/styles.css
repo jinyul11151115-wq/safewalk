@@ -457,9 +457,9 @@ summary { min-height: 48px; }
   .map-screen-reader-list { top: 276px; right: 10px; left: auto; width: min(360px, calc(100% - 20px)); max-height: min(42vh, 360px); }
 }
 @media (max-width: 440px) {
-  .map-actions-toolbar { top: 132px; right: 10px; grid-template-columns: repeat(3, 44px); gap: 5px; padding: 5px; }
-  .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { width: 44px; min-width: 44px; padding: 0; }
-  .map-actions-toolbar > .button span, .map-actions-toolbar .location-action span { display: none; }
+  .map-actions-toolbar { top: clamp(140px, 39vw, 160px); right: 10px; width: min(220px, calc(100vw - 20px)); box-sizing: border-box; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; padding: 5px; }
+  .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { width: 100%; min-width: 0; min-height: 46px; gap: 3px; padding: 3px 2px; overflow: hidden; font-size: clamp(9px, 2.6vw, 11px); line-height: 1.15; white-space: normal; text-align: center; }
+  .map-actions-toolbar > .button > svg, .map-actions-toolbar .location-action > svg, .map-actions-toolbar .map-sr-list-button > svg { width: 17px; height: 17px; flex: 0 0 auto; }
   .map-actions-toolbar .map-zoom-controls .button { width: 100%; }
   .map-screen-reader-list { top: 270px; right: 8px; width: min(340px, calc(100% - 16px)); }
 }
