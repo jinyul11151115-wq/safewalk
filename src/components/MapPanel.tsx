@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
-import { Check, ChevronDown, Crosshair, Filter, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
+import { Check, ChevronDown, ChevronUp, Crosshair, Filter, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { KakaoMarker, useMapContext, type Coordinates } from '../map/MapContext'
 import { hazardStatusLabel, hazardStatuses, hazardTypeGlyphs, hazardTypeLabels, hazardTypes, type Hazard, type HazardStatus, type HazardType } from '../map/hazards'
@@ -43,6 +43,7 @@ export function MapPanel({
   const { map, mapStatus, mapError, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
   const [screenReaderListOpen, setScreenReaderListOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(() => !window.matchMedia('(max-width: 850px)').matches)
   const suppressFilterClickUntilRef = useRef(0)
   const markerRefs = useRef<Map<string, KakaoMarker>>(new Map())
   const markerHazardsRef = useRef<Map<KakaoMarker, Hazard[]>>(new Map())
@@ -279,7 +280,7 @@ export function MapPanel({
   }
 
   return (
-    <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''} ${filtersOpen ? 'map-filters-open' : ''}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
+    <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''} ${filtersOpen ? 'map-filters-open' : ''} ${mobileToolsOpen ? 'map-tools-open' : 'map-tools-collapsed'}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
       <div className="map-canvas">
         <div className="kakao-map" ref={mapHostRef} aria-label="카카오맵 보행 위험 지도" role="application" />
 
@@ -307,7 +308,8 @@ export function MapPanel({
               <p className="map-filter-swipe-hint">항목을 좌우로 밀어 더 볼 수 있어요</p>
             </div>
           </section>
-          <div className="map-actions-toolbar" role="group" aria-label="지도 도구">
+          <button type="button" className="mobile-map-tools-toggle" aria-expanded={mobileToolsOpen} aria-controls="map-actions-toolbar" aria-label={mobileToolsOpen ? '지도 도구 숨기기' : '지도 도구 열기'} onClick={() => setMobileToolsOpen((open) => { if (open) setScreenReaderListOpen(false); return !open })}>{mobileToolsOpen ? <ChevronUp size={19} /> : <List size={19} />}<span>{mobileToolsOpen ? '도구 숨기기' : '지도 도구'}</span></button>
+          {mobileToolsOpen && <div id="map-actions-toolbar" className="map-actions-toolbar" role="group" aria-label="지도 도구">
             <Button variant="secondary" className="add-hazard-map-button" aria-label="새 위험 지점 제보" onClick={onAddHazard}><Plus size={17} /> 위험 제보</Button>
             {!testMode && <Button variant="secondary" className="location-action" aria-label="내 위치로 이동" onClick={goToMyLocation}><LocateFixed size={19} /><span>내 위치</span></Button>}
             <Button type="button" variant="secondary" className="map-sr-list-button" aria-label={`지도에 표시된 위험 지점 목록 ${screenReaderListOpen ? '닫기' : '열기'}`} aria-expanded={screenReaderListOpen} aria-controls="map-screen-reader-hazards" onClick={() => setScreenReaderListOpen((open) => !open)}><List size={17} />목록</Button>
@@ -315,7 +317,7 @@ export function MapPanel({
               <Button variant="secondary" size="icon" aria-label="지도 확대" onClick={() => map?.zoomIn()}><Plus size={19} /></Button>
               <Button variant="secondary" size="icon" aria-label="지도 축소" onClick={() => map?.zoomOut()}><Minus size={19} /></Button>
             </div>
-          </div>
+          </div>}
           {!miniMode && testMode && <p className="map-test-mode-badge" role="status" aria-live="polite">테스트 위치 모드</p>}
           {!miniMode && !testMode && locationPermission === 'prompt' && <p className="location-permission-hint" role="note">현재 위치를 쓰려면 “내 위치”를 누르고 허용해 주세요.</p>}
           {!miniMode && !testMode && locationPermission === 'denied' && <div className="location-permission-hint location-permission-denied" role="status" aria-live="polite"><strong>위치 권한이 꺼져 있어요.</strong><span>{locationError || '브라우저 설정에서 위치를 허용해 주세요.'}</span><details><summary>허용 방법 보기</summary><p>iPhone: 설정 앱에서 Safari 웹 사이트의 위치를 허용해 주세요.</p><p>Android: Chrome 주소창의 사이트 설정에서 위치를 허용해 주세요.</p></details><Button variant="secondary" aria-label="위치 권한 다시 확인" onClick={goToMyLocation}>다시 확인</Button></div>}
