@@ -52,7 +52,7 @@ export function MapPanel({
     ? testLocation
     : currentLocation ?? (map ? { lat: map.getCenter().lat, lng: map.getCenter().lng } : { lat: 36.3504, lng: 127.3845 })
   const listHazards = hazards
-    .filter((hazard) => isShown(hazard, visibleIds, typeFilter, statusFilter))
+    .filter((hazard) => isShown(hazard, null, typeFilter, statusFilter))
     .sort((first, second) => haversineMeters(mapCenter, first) - haversineMeters(mapCenter, second))
 
   useEffect(() => {
@@ -284,13 +284,13 @@ export function MapPanel({
 
         {!miniMode && !walkMode && <>
           <section id="map-screen-reader-hazards" className="map-screen-reader-list" role="region" aria-label="지도에 표시된 위험 지점 목록" hidden={!screenReaderListOpen}>
-            <div className="map-screen-reader-list-heading"><strong>지도에 표시된 위험 지점</strong><button type="button" aria-label="위험 지점 목록 패널 닫기" onClick={() => setScreenReaderListOpen(false)}><X size={18} /></button></div>
+            <div className="map-screen-reader-list-heading"><strong>위험 지점 목록 <span>({listHazards.length})</span></strong><button type="button" aria-label="위험 지점 목록 패널 닫기" onClick={() => setScreenReaderListOpen(false)}><X size={18} /></button></div>
             <ul>{listHazards.map((hazard) => {
               const status = hazardStatusLabel(hazard.status)
               const distance = Math.max(0, Math.round(haversineMeters(mapCenter, hazard) / 10) * 10)
               return <li key={hazard.id}><button type="button" aria-label={`${hazard.type}, 약 ${distance}미터, 상태 ${status}, ${hazard.title} 상세 보기`} onClick={() => focusHazard(hazard)}><span className={`hazard-list-symbol status-${status === '미신고' ? 'new' : status === '신고됨' ? 'reported' : 'resolved'}`}><span aria-hidden="true">{hazardTypeGlyphs[hazard.type]}</span></span><span className="map-sr-item-copy"><strong>{hazard.type} · 약 {distance}m</strong><span>{hazard.title} · {status}</span></span><span className="sr-status-text">{status}</span></button></li>
             })}</ul>
-            {listHazards.length === 0 && <p>현재 지도 범위에 표시된 위험 지점이 없어요.</p>}
+            {listHazards.length === 0 && <p>선택한 유형과 상태에 해당하는 위험 지점이 없어요.</p>}
           </section>
         </>}
 
