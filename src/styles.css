@@ -347,8 +347,20 @@ summary { min-height: 48px; }
 .walk-simulation-controls .button { min-height: 48px; }
 .walk-stop-button { width: 100%; min-height: 58px; margin-top: 10px; justify-content: center; font-weight: 800; }
 .walk-screen-reader-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
+.privacy-policy { margin-top: 12px; border: 1px solid #dfe6df; border-radius: 10px; background: #fff; }
+.privacy-policy summary { display: flex; min-height: 48px; align-items: center; padding: 0 13px; color: #245d40; font-size: 13px; font-weight: 750; cursor: pointer; }
+.privacy-policy-content { max-height: min(42svh, 360px); overflow-y: auto; padding: 0 14px 14px; color: #46534a; font-size: 12px; line-height: 1.65; }
+.privacy-policy-content h2 { margin: 4px 0 7px; color: #26352b; font-size: 16px; }
+.privacy-policy-content h3 { margin: 13px 0 4px; color: #304338; font-size: 13px; }
+.privacy-policy-content p { margin: 5px 0; }
+.privacy-policy-content ul { margin: 5px 0; padding-left: 19px; }
+.privacy-policy-content li + li { margin-top: 4px; }
+.privacy-policy-updated { color: #6a776e; font-size: 11px; }
 :root[data-theme="dark"] .walk-sound-check, :root[data-theme="dark"] .walk-simulation-controls { border-color: #4b5b4f; background: #26332a; color: #edf3ee; }
 :root[data-theme="dark"] .walk-simulation-controls > strong, :root[data-theme="dark"] .walk-simulation-controls > p, :root[data-theme="dark"] .walk-sound-check { color: #edf3ee; }
+:root[data-theme="dark"] .privacy-policy { border-color: #4b5b4f; background: #202b23; }
+:root[data-theme="dark"] .privacy-policy summary, :root[data-theme="dark"] .privacy-policy-content h2, :root[data-theme="dark"] .privacy-policy-content h3 { color: #d7e8da; }
+:root[data-theme="dark"] .privacy-policy-content { color: #c1cdc3; }
 @media (max-width: 850px) {
   .walk-simulation-controls { flex: 0 0 auto; }
   .walk-stop-button { flex: 0 0 auto; }

@@ -320,8 +320,28 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
       <div className="report-login-icon"><CircleUserRound size={27} /></div>
       <p className="eyebrow">제보하기</p>
       <h1 id="report-login-title" tabIndex={-1}>로그인 후<br />안전 정보를 나눠요.</h1>
-      <p className="report-login-copy">제보와 내 제보 목록은 로그인한 체험 계정에서만 볼 수 있어요.</p>
-      <div className="demo-auth-notice"><InfoIcon /> 체험용 이메일은 이 기기의 내 제보 목록에만 저장돼요. {sharedReportsEnabled ? '위험 제보 내용과 사진은 공유 서버에 공개돼요.' : '공유 DB가 연결되지 않아 제보는 이 기기에만 저장돼요.'}</div>
+      <p className="report-login-copy">이 화면의 이메일 입력은 체험용 이름 설정이며 실제 계정 인증은 아닙니다.</p>
+      <div className="demo-auth-notice"><InfoIcon /> 입력한 이메일은 이 기기의 내 제보 목록 구분에만 사용돼요. {sharedReportsEnabled ? '제보 위치·내용·사진은 공유 서버에 공개돼요.' : '공유 DB 연결 전에는 제보가 이 기기에만 저장돼요.'}</div>
+      <details className="privacy-policy">
+        <summary>개인정보처리방침</summary>
+        <div className="privacy-policy-content">
+          <h2>개인정보 처리 안내</h2>
+          <p>안심보행은 보행 위험 정보를 등록하고 다른 이용자와 공유하기 위해 아래 정보를 처리합니다.</p>
+          <h3>처리하는 정보와 목적</h3>
+          <ul>
+            <li>제보할 때 선택한 위치, 위험 유형, 통행 가능 여부, 심각도, 메모, 사진: 위험 지점을 지도에 표시하고 이용자에게 공유합니다.</li>
+            <li>제보 저장 시 생성되는 익명 사용자 식별자와 등록 시각: 제보 기록을 저장하고 구분하는 데 사용합니다.</li>
+            <li>이 화면에 입력한 이메일: 현재 체험용으로 이 브라우저의 내 제보 목록을 구분할 때만 사용합니다. 이메일 주소는 Supabase로 전송하지 않으며 실제 로그인 인증에도 사용하지 않습니다.</li>
+          </ul>
+          <h3>공개 범위와 위치 정보</h3>
+          <p>Supabase 연결이 정상인 경우 제보 위치·내용·사진은 다른 이용자도 볼 수 있도록 공개 데이터베이스와 사진 저장소에 저장됩니다. 공개 제보에는 얼굴, 차량 번호판, 연락처 등 개인정보를 포함하지 마세요. 보행 중 현재 위치와 이동 이력은 기기에서 처리하며 서버에 전송하지 않습니다. 단, 사용자가 제보를 등록한 위치는 해당 제보와 함께 공개됩니다.</p>
+          <h3>보관 기간과 삭제 요청</h3>
+          <p>체험 이메일과 이 기기의 내 제보 기록은 브라우저 저장공간에 보관되며, 브라우저 데이터 삭제 시 함께 지워질 수 있습니다. 서버에 제출된 제보와 사진은 서비스 운영자가 삭제할 때까지 공개 저장소에 보관됩니다. 현재 앱에는 이용자가 직접 서버 제보를 삭제하는 기능이 없습니다.</p>
+          <h3>문의</h3>
+          <p>개인정보 관련 문의는 서비스 운영자에게 요청해 주세요. 현재 이 앱에는 별도 문의처가 등록되어 있지 않습니다.</p>
+          <p className="privacy-policy-updated">시행일: 2026년 11월 21일</p>
+        </div>
+      </details>
       <form className="demo-login-form" onSubmit={signIn}>
         <label htmlFor="demo-email">체험용 이메일</label>
         <input id="demo-email" type="email" required autoComplete="email" value={emailInput} onChange={(event) => setEmailInput(event.target.value)} placeholder="name@example.com" />
