@@ -14,6 +14,7 @@ type KakaoSdk = {
     CustomOverlay: new (options: Record<string, unknown>) => {
       setMap: (map: KakaoRawMap | null) => void
       setPosition: (position: KakaoLatLng) => void
+      setZIndex: (zIndex: number) => void
       getPosition: () => KakaoLatLng
       getContent: () => HTMLElement
     }
@@ -154,7 +155,7 @@ export class KakaoMarker {
   private listeners = new Map<string, Set<(...args: any[]) => void>>()
   private dragCleanup: (() => void) | null = null
 
-  constructor(options: { element: HTMLElement; anchor?: 'bottom'; draggable?: boolean }) {
+  constructor(options: { element: HTMLElement; anchor?: 'bottom'; draggable?: boolean; raiseOnHover?: boolean }) {
     this.element = options.element
     this.draggable = Boolean(options.draggable)
     this.element.style.cursor = this.draggable ? 'grab' : 'pointer'
@@ -170,6 +171,10 @@ export class KakaoMarker {
         zIndex: 5,
         clickable: true,
       })
+      if (options.raiseOnHover) {
+        this.element.addEventListener('pointerenter', () => this.overlay.setZIndex(50))
+        this.element.addEventListener('pointerleave', () => this.overlay.setZIndex(5))
+      }
       if (this.map) this.overlay.setMap(this.map.raw)
       if (this.draggable) this.enableDragging()
     })

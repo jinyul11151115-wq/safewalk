@@ -45,6 +45,7 @@ export function MapPanel({
   const [filtersOpen, setFiltersOpen] = useState(false)
   const suppressFilterClickUntilRef = useRef(0)
   const markerRefs = useRef<Map<string, KakaoMarker>>(new Map())
+  const markerHazardsRef = useRef<Map<KakaoMarker, Hazard[]>>(new Map())
   const dragMarkerRef = useRef<KakaoMarker | null>(null)
   const testMarkerRef = useRef<KakaoMarker | null>(null)
 
@@ -58,29 +59,70 @@ export function MapPanel({
   useEffect(() => {
     if (mapStatus !== 'ready' || !map) return
     const markers = new Map<string, KakaoMarker>()
+    const grouped: Hazard[][] = []
     hazards.forEach((hazard) => {
-      const element = document.createElement('button')
-      element.type = 'button'
-      const displayStatus = hazardStatusLabel(hazard.status)
-      const resolved = displayStatus === '처리완료'
-      element.className = `sdk-hazard status-${displayStatus === '미신고' ? 'new' : displayStatus === '신고됨' ? 'reported' : 'resolved'}`
-      element.setAttribute('aria-label', `${hazard.type}, ${displayStatus}, ${hazard.title}`)
-      const glyph = document.createElement('span')
-      glyph.className = 'sdk-hazard-glyph'
-      glyph.textContent = hazardTypeGlyphs[hazard.type]
-      const label = document.createElement('span')
-      label.className = 'sdk-hazard-label'
-      label.textContent = hazardTypeLabels[hazard.type]
-      const state = document.createElement('span')
-      state.className = 'sdk-hazard-state'
-      state.textContent = resolved ? '처리완료 ✓' : displayStatus
-      element.append(glyph, label, state)
-      element.addEventListener('click', (event) => {
-        event.stopPropagation()
-        onSelect(hazard)
-      })
-      const marker = new KakaoMarker({ element, anchor: 'bottom' }).setLngLat([hazard.lng, hazard.lat])
-      markers.set(hazard.id, marker)
+      const group = grouped.find((items) => haversineMeters(items[0], hazard) <= 10)
+      if (group) group.push(hazard)
+      else grouped.push([hazard])
+    })
+
+    grouped.forEach((group) => {
+      const makeHazardButton = (hazard: Hazard, primary: boolean) => {
+        const displayStatus = hazardStatusLabel(hazard.status)
+        const resolved = displayStatus === '처리완료'
+        const button = document.createElement('button')
+        button.type = 'button'
+        button.className = `sdk-hazard status-${displayStatus === '미신고' ? 'new' : displayStatus === '신고됨' ? 'reported' : 'resolved'}${primary ? ' sdk-hazard-cluster-primary' : ''}`
+        button.setAttribute('aria-label', `${hazard.type}, ${displayStatus}, ${hazard.title}`)
+        const glyph = document.createElement('span')
+        glyph.className = 'sdk-hazard-glyph'
+        glyph.textContent = hazardTypeGlyphs[hazard.type]
+        const label = document.createElement('span')
+        label.className = 'sdk-hazard-label'
+        label.textContent = hazardTypeLabels[hazard.type]
+        const state = document.createElement('span')
+        state.className = 'sdk-hazard-state'
+        state.textContent = resolved ? '처리완료 ✓' : displayStatus
+        button.append(glyph, label, state)
+        button.addEventListener('click', (event) => {
+          event.stopPropagation()
+          onSelect(hazard)
+        })
+        return button
+      }
+
+      const element = document.createElement('div')
+      element.className = `sdk-hazard-cluster ${group.length > 1 ? 'has-overlap' : ''}`
+      const primary = makeHazardButton(group[0], true)
+      element.append(primary)
+      if (group.length > 1) {
+        const badge = document.createElement('span')
+        badge.className = 'sdk-hazard-cluster-count'
+        badge.textContent = String(group.length)
+        badge.setAttribute('aria-hidden', 'true')
+        primary.append(badge)
+
+        const options = document.createElement('div')
+        options.className = 'sdk-hazard-cluster-options'
+        options.setAttribute('role', 'group')
+        options.setAttribute('aria-label', `${group.length}개의 겹친 제보`)
+        const heading = document.createElement('span')
+        heading.className = 'sdk-hazard-cluster-heading'
+        heading.textContent = `겹친 제보 ${group.length}건 · 항목을 선택하세요`
+        options.append(heading)
+        group.forEach((hazard) => options.append(makeHazardButton(hazard, false)))
+        element.append(options)
+        primary.addEventListener('click', (event) => {
+          if (matchMedia('(hover: hover)').matches) return
+          event.preventDefault()
+          event.stopImmediatePropagation()
+          element.classList.toggle('is-expanded')
+        }, true)
+      }
+
+      const marker = new KakaoMarker({ element, anchor: 'bottom', raiseOnHover: group.length > 1 }).setLngLat([group[0].lng, group[0].lat])
+      group.forEach((hazard) => markers.set(hazard.id, marker))
+      markerHazardsRef.current.set(marker, group)
     })
     markerRefs.current = markers
 
@@ -105,18 +147,22 @@ export function MapPanel({
       map.off('idle', queryVisibleHazards)
       markers.forEach((marker) => marker.remove())
       markerRefs.current = new Map()
+      markerHazardsRef.current = new Map()
     }
   }, [hazards, map, mapStatus, onSelect, onVisibleIds])
 
   useEffect(() => {
     if (!map) return
-    const shownIds = new Set<string>()
-    markerRefs.current.forEach((marker, id) => {
-      const hazard = hazards.find((item) => item.id === id)
-      const activeHazard = hazard && hazard.status !== 'fixed' && hazard.status !== '처리완료'
-      const shouldShow = hazard && !miniMode && (walkMode ? activeHazard : isShown(hazard, visibleIds, typeFilter, statusFilter))
+    const visited = new Set<KakaoMarker>()
+    markerRefs.current.forEach((marker) => {
+      if (visited.has(marker)) return
+      visited.add(marker)
+      const group = markerHazardsRef.current.get(marker) ?? []
+      const shouldShow = !miniMode && group.some((hazard) => {
+        const activeHazard = hazard.status !== 'fixed' && hazard.status !== '처리완료'
+        return walkMode ? activeHazard : isShown(hazard, visibleIds, typeFilter, statusFilter)
+      })
       if (shouldShow) {
-        shownIds.add(id)
         marker.addTo(map)
       } else marker.remove()
     })
