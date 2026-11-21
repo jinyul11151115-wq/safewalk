@@ -469,6 +469,13 @@ summary { min-height: 48px; }
   .sheet-meta strong { flex-wrap: wrap; word-break: keep-all; }
 }
 
+@media (max-width: 850px) {
+  .workspace.safety-mode { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) !important; overflow: hidden; }
+  .safety-mode > .map-workspace { display: none !important; }
+  .safety-mode > .side-panel.safety-side-panel { order: 0; width: 100%; min-height: 0; max-height: 100%; overflow-x: hidden; overflow-y: auto; padding: 15px 16px calc(24px + env(safe-area-inset-bottom)); border: 0; }
+  .safety-mode .safety-report-screen { min-height: 0; }
+}
+
 @media (max-width: 380px) {
   .app-tabs { gap: 2px; }
   .app-tabs button { gap: 4px; padding-inline: 3px; font-size: clamp(10px, 3.1vw, 12px); }
