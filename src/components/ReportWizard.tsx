@@ -86,11 +86,12 @@ type Props = {
   positionAdjusted: boolean
   onStepChange: (step: number) => void
   onOpenLocationMap?: () => void
+  onLocationMapDone?: () => void
   onAuthChange: (loggedIn: boolean) => void
   onClose: () => void
 }
 
-export function ReportWizard({ active, hazards, onHazardsChange, reportLocation, onReportLocationChange, positionAdjusted, onStepChange, onOpenLocationMap, onAuthChange, onClose }: Props) {
+export function ReportWizard({ active, hazards, onHazardsChange, reportLocation, onReportLocationChange, positionAdjusted, onStepChange, onOpenLocationMap, onLocationMapDone, onAuthChange, onClose }: Props) {
   const { currentLocation, moveToMyLocation } = useMapContext()
   const [userEmail, setUserEmail] = useState(() => localStorage.getItem('safe-walk-demo-user') ?? '')
   const [emailInput, setEmailInput] = useState('')
@@ -150,6 +151,7 @@ export function ReportWizard({ active, hazards, onHazardsChange, reportLocation,
     }
     onReportLocationChange(position)
     setAccuracy(position.accuracy ?? null)
+    onLocationMapDone?.()
   }
 
   async function handlePhoto(event: ChangeEvent<HTMLInputElement>, slot: PhotoSlot) {

@@ -523,6 +523,7 @@ function App() {
             positionAdjusted={positionAdjusted}
             onStepChange={(step) => { setReportStep(step); if (step !== 1) setReportMapOpen(false) }}
             onOpenLocationMap={() => setReportMapOpen(true)}
+            onLocationMapDone={() => setReportMapOpen(false)}
             onAuthChange={handleDemoAuthChange}
             onClose={() => setActiveTab('map')}
             />
