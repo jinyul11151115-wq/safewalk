@@ -486,9 +486,9 @@ summary { min-height: 48px; }
   .report-mode:not(.report-map-hidden) > .map-workspace { display: block; min-height: 112px; }
 }
 
-.report-location-map-open { position: fixed !important; z-index: 60 !important; inset: 0 !important; display: block !important; width: 100vw; height: 100dvh; min-height: 100svh !important; order: initial !important; overflow: hidden !important; background: #edf0e8; }
+.report-location-map-open { position: fixed !important; z-index: 60 !important; inset: 0 !important; display: block !important; width: 100vw !important; max-width: none !important; height: 100dvh !important; min-height: 100svh !important; margin: 0 !important; order: initial !important; overflow: hidden !important; background: #edf0e8; }
 .report-location-map-open .map-section { position: absolute !important; inset: 0 !important; }
-.report-location-map-toolbar { position: absolute; z-index: 20; top: env(safe-area-inset-top, 0px); right: 0; left: 0; display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 14px; padding: 10px max(14px, env(safe-area-inset-right)) 10px max(14px, env(safe-area-inset-left)); border-bottom: 1px solid #dce5dc; background: #fffffff2; box-shadow: 0 3px 14px #1d30251c; }
+.report-location-map-toolbar { position: absolute; z-index: 20; top: 0; right: 0; left: 0; display: flex; min-height: calc(76px + env(safe-area-inset-top, 0px)); align-items: center; gap: 14px; padding: calc(10px + env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right)) 10px max(14px, env(safe-area-inset-left)); border-bottom: 1px solid #dce5dc; background: #fffffff2; box-shadow: 0 3px 14px #1d30251c; pointer-events: none; }
 .report-location-map-toolbar > div { display: grid; min-width: 0; gap: 3px; }
 .report-location-map-toolbar strong { color: #25372b; font-size: 16px; }
 .report-location-map-toolbar span { color: #5d6c61; font-size: 12px; line-height: 1.4; }
@@ -497,11 +497,13 @@ summary { min-height: 48px; }
 .report-location-center-pin > svg { stroke: white; stroke-width: 1.5; }
 .report-location-center-pin > span { width: 9px; height: 5px; margin-top: -2px; border-radius: 50%; background: #53291f; box-shadow: 0 1px 2px #1118; }
 .report-location-coordinates { position: absolute; z-index: 19; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; max-width: calc(100% - 24px); padding: 9px 13px; transform: translateX(-50%); border: 1px solid #d9e2d9; border-radius: 999px; background: #fffffff2; color: #35473a; box-shadow: 0 3px 14px #1d302522; font-size: 12px; font-weight: 750; white-space: nowrap; pointer-events: none; }
+.report-location-map-footer { position: absolute; z-index: 24; right: 0; bottom: 0; left: 0; display: flex; justify-content: center; padding: 14px max(16px, env(safe-area-inset-right)) calc(14px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left)); background: linear-gradient(transparent, #fffffff0 28%); }
+.report-location-map-footer .button { width: min(100%, 460px); min-height: 58px; justify-content: center; gap: 9px; box-shadow: 0 5px 20px #1d302533; font-size: 16px; font-weight: 800; }
 @media (max-width: 440px) {
   .report-location-map-toolbar { min-height: calc(72px + env(safe-area-inset-top, 0px)); gap: 8px; padding: calc(8px + env(safe-area-inset-top, 0px)) max(9px, env(safe-area-inset-right)) 8px max(12px, env(safe-area-inset-left)); }
   .report-location-map-toolbar strong { font-size: 14px; }
   .report-location-map-toolbar span { max-width: 180px; font-size: 10px; }
-  .report-location-map-toolbar .button { min-height: 46px; gap: 5px; padding-inline: 9px; font-size: 12px; }
+  .report-location-map-footer .button { min-height: 56px; font-size: 15px; }
 }
 
 @media (min-width: 851px) {

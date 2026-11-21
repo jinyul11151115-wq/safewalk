@@ -216,9 +216,21 @@ export function MapPanel({
 
   useEffect(() => {
     if (!map || mapStatus !== 'ready' || !mapVisible) return
-    const timer = window.setTimeout(() => map.resize(), 120)
-    return () => window.clearTimeout(timer)
-  }, [map, mapStatus, mapVisible, miniMode])
+    const frames: number[] = []
+    const timers: number[] = []
+    const resizeMap = () => {
+      map.resize()
+    }
+    frames.push(window.requestAnimationFrame(() => {
+      resizeMap()
+      frames.push(window.requestAnimationFrame(resizeMap))
+    }))
+    timers.push(window.setTimeout(resizeMap, 120), window.setTimeout(resizeMap, 360))
+    return () => {
+      frames.forEach(window.cancelAnimationFrame)
+      timers.forEach(window.clearTimeout)
+    }
+  }, [locationPickMode, map, mapStatus, mapVisible, miniMode])
 
   useEffect(() => {
     if (!map || mapStatus !== 'ready' || !testMode) {
