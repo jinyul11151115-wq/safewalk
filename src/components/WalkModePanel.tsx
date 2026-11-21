@@ -67,6 +67,7 @@ export function WalkModePanel({
   const [speechState, setSpeechState] = useState<'idle' | 'starting' | 'playing' | 'ready' | 'blocked'>('idle')
   const [speechIssue, setSpeechIssue] = useState('')
   const [screenReaderAnnouncement, setScreenReaderAnnouncement] = useState('')
+  const [spokenUntil, setSpokenUntil] = useState(0)
   const [simulationActive, setSimulationActive] = useState(false)
   const [simulationRoute, setSimulationRoute] = useState(true)
   const [simulationDistance, setSimulationDistance] = useState(60)
@@ -91,6 +92,9 @@ export function WalkModePanel({
   const simulationHazardRef = useRef<Hazard | null>(null)
   const speechAttemptRef = useRef(0)
   const speechStartedAttemptRef = useRef(0)
+  const speechEndedAttemptRef = useRef(0)
+  const speechBoundarySeenRef = useRef(false)
+  const speechProgressTimerRef = useRef<number | null>(null)
   const koreanVoiceRef = useRef<SpeechSynthesisVoice | null>(null)
   const processPositionRef = useRef<(sample: GeolocationSample) => void>(() => {})
   const answerQuestionRef = useRef<(answer: 'yes' | 'fixed' | 'later') => void>(() => {})
@@ -119,11 +123,15 @@ export function WalkModePanel({
       return
     }
     const attempt = ++speechAttemptRef.current
+    if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+    speechProgressTimerRef.current = null
+    speechBoundarySeenRef.current = false
     synthesis.cancel()
     synthesis.resume()
     setSpeechState('starting')
     setSpeechIssue('')
     setScreenReaderAnnouncement('')
+    setSpokenUntil(0)
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.lang = 'ko-KR'
     utterance.rate = voiceRate
@@ -132,14 +140,53 @@ export function WalkModePanel({
     if (koreanVoice) utterance.voice = koreanVoice
     utterance.onstart = () => {
       speechStartedAttemptRef.current = attempt
+      speechEndedAttemptRef.current = 0
       if (speechAttemptRef.current === attempt) setSpeechState('playing')
+      window.setTimeout(() => {
+        if (speechAttemptRef.current !== attempt || speechBoundarySeenRef.current || speechEndedAttemptRef.current === attempt) return
+        const words = [...text.matchAll(/\S+/gu)]
+        if (!words.length) return
+        const wordDuration = Math.max(180, text.length * 115 / (words.length * voiceRate))
+        let currentWord = 0
+        speechProgressTimerRef.current = window.setInterval(() => {
+          if (speechAttemptRef.current !== attempt || speechBoundarySeenRef.current) {
+            if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+            speechProgressTimerRef.current = null
+            return
+          }
+          currentWord = Math.min(words.length, currentWord + 1)
+          const word = words[currentWord - 1]
+          setSpokenUntil((word.index ?? 0) + word[0].length)
+          if (currentWord === words.length && speechProgressTimerRef.current !== null) {
+            window.clearInterval(speechProgressTimerRef.current)
+            speechProgressTimerRef.current = null
+          }
+        }, wordDuration)
+      }, 800)
+    }
+    utterance.onboundary = (event) => {
+      if (speechAttemptRef.current !== attempt) return
+      speechBoundarySeenRef.current = true
+      if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+      speechProgressTimerRef.current = null
+      const start = Math.max(0, event.charIndex)
+      const wordEnd = text.slice(start).search(/\s/u)
+      setSpokenUntil(wordEnd < 0 ? text.length : start + wordEnd + 1)
     }
     utterance.onend = () => {
-      if (speechAttemptRef.current === attempt) setSpeechState('ready')
+      speechEndedAttemptRef.current = attempt
+      if (speechAttemptRef.current === attempt) {
+        setSpokenUntil(text.length)
+        setSpeechState('ready')
+      }
+      if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+      speechProgressTimerRef.current = null
     }
     utterance.onerror = (event) => {
       if (speechAttemptRef.current !== attempt || event.error === 'canceled' || event.error === 'interrupted') return
       setSpeechState('blocked')
+      if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+      speechProgressTimerRef.current = null
       const engineHelp = /Android/i.test(navigator.userAgent)
         ? '삼성폰: 설정 > 일반 관리 > 글자 읽어주기에서 기본 엔진을 Samsung TTS 또는 Speech Services by Google로 선택하고, 한국어 음성 데이터를 설치한 뒤 미디어 음량을 확인해 주세요.'
         : '기기의 음성 엔진과 미디어 음량을 확인한 뒤 다시 시도해 주세요.'
@@ -149,6 +196,8 @@ export function WalkModePanel({
     try {
       synthesis.speak(utterance)
     } catch {
+      if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+      speechProgressTimerRef.current = null
       setSpeechState('blocked')
       setSpeechIssue('브라우저가 음성 재생을 막았어요. [소리 다시 확인]을 눌러 주세요.')
       return
@@ -459,6 +508,8 @@ export function WalkModePanel({
     if (!preserveSpeech) {
       ++speechAttemptRef.current
       window.speechSynthesis?.cancel()
+      if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+      speechProgressTimerRef.current = null
     }
     if (stationaryTimerRef.current !== null) window.clearTimeout(stationaryTimerRef.current)
     stationaryTimerRef.current = null
@@ -596,6 +647,8 @@ export function WalkModePanel({
         appPausedRef.current = true
         ++speechAttemptRef.current
         window.speechSynthesis?.cancel()
+        if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
+        speechProgressTimerRef.current = null
         setSpeechState('idle')
         setGpsLabel('앱 전환 또는 화면 잠금으로 일시 중지됨 · 복귀 후 위치 확인 중')
         if (stationaryTimerRef.current !== null) window.clearTimeout(stationaryTimerRef.current)
@@ -638,6 +691,7 @@ export function WalkModePanel({
     releaseWakeLock()
     ++speechAttemptRef.current
     window.speechSynthesis?.cancel()
+    if (speechProgressTimerRef.current !== null) window.clearInterval(speechProgressTimerRef.current)
     if (stationaryTimerRef.current !== null) window.clearTimeout(stationaryTimerRef.current)
   }, [])
 
@@ -670,7 +724,11 @@ export function WalkModePanel({
         {warning ? <div className="walk-warning-card" role="region" aria-label="위험 경고">
           <span className="warning-icon"><AlertTriangle size={31} /></span>
           <p className="warning-hazard-name">{warning.hazard.type} 위험</p>
-          <h2 aria-live="assertive" aria-atomic="true">{warning.message}</h2>
+          <h2 className="walk-warning-message" aria-live="assertive" aria-atomic="true">{warning.message.split(/(\s+)/u).map((part, index, parts) => {
+            const wordStart = parts.slice(0, index).join('').length
+            const isWord = /\S/u.test(part)
+            return <span key={`${index}-${part}`} className={isWord ? `walk-warning-word ${wordStart < spokenUntil ? 'is-spoken' : ''}` : undefined}>{part}</span>
+          })}</h2>
           <button type="button" aria-label="경고 음성 다시 듣기" onClick={() => speak(warning.message)}><Volume2 size={19} />다시 듣기</button>
         </div> : <div className="walk-scanning"><span className="scan-rings"><Navigation size={30} /></span><strong>{positionInaccurate ? '위치 오차가 커서 거리를 단정하지 않아요' : '주변 위험을 확인하고 있어요.'}</strong><span>{simulationActive ? `모의 위치 ${simulationDistance}m · 알림 거리 ${simulationRadius}m` : '위치와 이동 이력은 이 기기에서만 처리해요'}</span></div>}
         {(simulationActive || (testMode && moving)) && <div className="walk-simulation-controls" role="group" aria-label="모의 보행 테스트 단계">
