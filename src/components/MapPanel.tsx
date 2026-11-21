@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Marker } from 'maplibre-gl'
-import { Check, Crosshair, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
+import { Check, ChevronDown, Crosshair, Filter, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { useMapContext, type Coordinates } from '../map/MapContext'
 import { hazardStatusLabel, hazardStatuses, hazardTypeGlyphs, hazardTypeLabels, hazardTypes, type Hazard, type HazardStatus, type HazardType } from '../map/hazards'
@@ -43,6 +43,7 @@ export function MapPanel({
 }: Props) {
   const { map, mapStatus, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
   const [screenReaderListOpen, setScreenReaderListOpen] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const markerRefs = useRef<Map<string, Marker>>(new Map())
   const dragMarkerRef = useRef<Marker | null>(null)
   const testMarkerRef = useRef<Marker | null>(null)
@@ -201,12 +202,19 @@ export function MapPanel({
   }
 
   return (
-    <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
+    <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''} ${filtersOpen ? 'map-filters-open' : ''}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
       <div className="map-canvas">
         <div className="maplibre-map" ref={mapHostRef} aria-label="OpenFreeMap 지도" role="application" />
 
         {mapStatus === 'ready' && !miniMode && !walkMode && <>
-          <div className="map-filter-bar" role="group" aria-label="지도 위험 지점 필터">
+          <section className={`map-filter-bar ${filtersOpen ? 'filters-open' : 'filters-collapsed'}`} aria-label="지도 위험 지점 필터">
+            <button type="button" className="map-filter-toggle" aria-expanded={filtersOpen} aria-controls="map-filter-options" onClick={() => setFiltersOpen((open) => !open)}>
+              <Filter size={17} />
+              <span>유형·상태 필터</span>
+              <small>{typeFilter === '전체 유형' ? '전체 유형' : typeFilter} · {statusFilter === '전체 상태' ? '전체 상태' : statusFilter}</small>
+              <ChevronDown size={18} aria-hidden="true" />
+            </button>
+            <div id="map-filter-options" className="map-filter-options" hidden={!filtersOpen}>
             <div className="map-filter-row" role="group" aria-label="유형별 위험 필터">
               <span className="map-filter-heading">유형</span>
               {(['전체 유형', ...hazardTypes] as const).map((type) => <button key={type} type="button" className={`map-filter-chip ${typeFilter === type ? 'active' : ''}`} aria-pressed={typeFilter === type} aria-label={`${type} 위험 보기`} onClick={() => onTypeFilter(type)}>{type}</button>)}
@@ -215,7 +223,8 @@ export function MapPanel({
               <span className="map-filter-heading">상태</span>
               {(['전체 상태', ...hazardStatuses] as const).map((status) => <button key={status} type="button" className={`map-filter-chip status-chip ${statusFilter === status ? 'active' : ''}`} aria-pressed={statusFilter === status} aria-label={`${status} 위험 보기`} onClick={() => onStatusFilter(status)}><i className={`state-dot state-${status}`} />{status}</button>)}
             </div>
-          </div>
+            </div>
+          </section>
           <div className="map-actions-toolbar" role="group" aria-label="지도 도구">
             <Button variant="secondary" className="add-hazard-map-button" aria-label="새 위험 지점 제보" onClick={onAddHazard}><Plus size={17} /> 위험 제보</Button>
             {!testMode && <Button variant="secondary" className="location-action" aria-label="내 위치로 이동" onClick={goToMyLocation}><LocateFixed size={19} /><span>내 위치</span></Button>}
