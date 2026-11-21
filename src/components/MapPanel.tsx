@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { Marker } from 'maplibre-gl'
 import { Check, ChevronDown, Crosshair, Filter, Info, List, LocateFixed, Minus, Plus, X } from 'lucide-react'
 import { Button } from './ui/button'
@@ -44,6 +44,7 @@ export function MapPanel({
   const { map, mapStatus, mapHostRef, retryMap, moveToMyLocation, currentLocation, locationPermission, locationError } = useMapContext()
   const [screenReaderListOpen, setScreenReaderListOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const suppressFilterClickUntilRef = useRef(0)
   const markerRefs = useRef<Map<string, Marker>>(new Map())
   const dragMarkerRef = useRef<Marker | null>(null)
   const testMarkerRef = useRef<Marker | null>(null)
@@ -201,6 +202,37 @@ export function MapPanel({
     }
   }
 
+  function startFilterDrag(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return
+    const row = event.currentTarget
+    const startX = event.clientX
+    const startScrollLeft = row.scrollLeft
+    let dragged = false
+    const move = (pointerEvent: PointerEvent) => {
+      const delta = pointerEvent.clientX - startX
+      if (!dragged && Math.abs(delta) < 5) return
+      dragged = true
+      pointerEvent.preventDefault()
+      row.scrollLeft = startScrollLeft - delta
+    }
+    const end = () => {
+      window.removeEventListener('pointermove', move)
+      window.removeEventListener('pointerup', end)
+      window.removeEventListener('pointercancel', end)
+      if (dragged) suppressFilterClickUntilRef.current = performance.now() + 80
+    }
+    window.addEventListener('pointermove', move, { passive: false })
+    window.addEventListener('pointerup', end, { once: true })
+    window.addEventListener('pointercancel', end, { once: true })
+  }
+
+  function preventFilterClickAfterDrag(event: React.MouseEvent<HTMLDivElement>) {
+    if (performance.now() > suppressFilterClickUntilRef.current) return
+    event.preventDefault()
+    event.stopPropagation()
+    suppressFilterClickUntilRef.current = 0
+  }
+
   return (
     <section className={`map-section ${miniMode ? 'mini-map-section' : ''} ${walkMode ? 'walk-mode-map' : ''} ${filtersOpen ? 'map-filters-open' : ''}`} aria-hidden={walkMode} aria-label={miniMode ? '제보 위치 조정 지도' : walkMode ? '보행 중 위치와 위험 지점 지도' : '대전 보행 위험 지점 지도'}>
       <div className="map-canvas">
@@ -217,13 +249,13 @@ export function MapPanel({
             <div id="map-filter-options" className="map-filter-options" hidden={!filtersOpen}>
               <div className="map-filter-row" role="group" aria-label="유형별 위험 필터">
                 <span className="map-filter-heading">유형</span>
-                <div className="map-filter-chips">
+                <div className="map-filter-chips" onPointerDown={startFilterDrag} onClickCapture={preventFilterClickAfterDrag}>
                   {(['전체 유형', ...hazardTypes] as const).map((type) => <button key={type} type="button" className={`map-filter-chip ${typeFilter === type ? 'active' : ''}`} aria-pressed={typeFilter === type} aria-label={`${type} 위험 보기`} onClick={() => onTypeFilter(type)}>{type}</button>)}
                 </div>
               </div>
               <div className="map-filter-row" role="group" aria-label="상태별 위험 필터">
                 <span className="map-filter-heading">상태</span>
-                <div className="map-filter-chips">
+                <div className="map-filter-chips" onPointerDown={startFilterDrag} onClickCapture={preventFilterClickAfterDrag}>
                   {(['전체 상태', ...hazardStatuses] as const).map((status) => <button key={status} type="button" className={`map-filter-chip status-chip ${statusFilter === status ? 'active' : ''}`} aria-pressed={statusFilter === status} aria-label={`${status} 위험 보기`} onClick={() => onStatusFilter(status)}><i className={`state-dot state-${status}`} />{status}</button>)}
                 </div>
               </div>

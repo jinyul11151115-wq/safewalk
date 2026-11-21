@@ -96,7 +96,8 @@ button { color: inherit; }
 .map-filter-options { display: grid; gap: 7px; padding: 0 9px 9px; }
 .map-filter-options[hidden] { display: none; }
 .map-filter-options .map-filter-row { display: grid; grid-template-columns: 33px minmax(0, 1fr); max-width: 100%; min-width: 0; overflow: hidden; }
-.map-filter-chips { display: flex; min-width: 0; gap: 5px; overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #91a799 transparent; }
+.map-filter-chips { display: flex; min-width: 0; gap: 5px; overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #91a799 transparent; cursor: grab; user-select: none; }
+.map-filter-chips:active { cursor: grabbing; }
 .map-filter-chips .map-filter-chip { flex: 0 0 auto; scroll-snap-align: start; }
 .map-filter-chips::-webkit-scrollbar { height: 4px; }
 .map-filter-chips::-webkit-scrollbar-thumb { border-radius: 4px; background: #91a799; }
