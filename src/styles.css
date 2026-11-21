@@ -479,6 +479,13 @@ summary { min-height: 48px; }
   .severity-choice { grid-template-columns: 36px minmax(66px, .8fr) minmax(0, 1fr); gap: 5px; padding-inline: 6px; }
 }
 
+@media (max-width: 850px) {
+  .workspace.report-mode.report-map-hidden { grid-template-rows: minmax(0, 1fr) !important; }
+  .report-mode.report-map-hidden > .map-workspace { display: none !important; }
+  .workspace.report-mode:not(.report-map-hidden) { grid-template-rows: minmax(0, 1fr) var(--report-map-height, 112px); }
+  .report-mode:not(.report-map-hidden) > .map-workspace { display: block; min-height: 112px; }
+}
+
 @media (min-width: 851px) {
   .workspace { transition: grid-template-columns 240ms ease; }
   .workspace.desktop-sidebar-collapsed { grid-template-columns: 0 minmax(0, 1fr); }
