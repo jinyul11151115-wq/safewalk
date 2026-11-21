@@ -484,6 +484,19 @@ summary { min-height: 48px; }
    independent absolute-positioned controls in the same corner. */
 .map-actions-toolbar { position: absolute; z-index: 5; top: 170px; right: 16px; display: grid; width: 142px; gap: 8px; padding: 9px; border: 1px solid #dfe5de; border-radius: 13px; background: #fffffff2; box-shadow: 0 4px 16px #25372a22; }
 .kakao-map { position: absolute; inset: 0; width: 100%; height: 100%; background: #edf0e8; }
+@media (min-width: 851px) {
+  .app-shell:not(.is-moving) .workspace.walk-mode { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); justify-items: stretch; }
+  .app-shell:not(.is-moving) .workspace.walk-mode .side-panel.walk-side-panel { width: 100%; max-width: none; min-height: 0; overflow-y: auto; padding: 18px 26px; border: 0; background: transparent; }
+  .app-shell:not(.is-moving) .workspace.walk-mode .walk-mode-content.tab-content-active { width: 100%; min-height: 100%; align-items: center; justify-content: center; }
+  .app-shell:not(.is-moving) .walk-mode-panel { width: min(100%, 680px); flex: 0 1 auto; }
+  .app-shell:not(.is-moving) .walk-start-view { gap: 0; }
+  .app-shell:not(.is-moving) .walk-emblem { width: 50px; height: 50px; margin-bottom: 10px; }
+  .app-shell:not(.is-moving) .walk-start-view h1 { font-size: clamp(29px, 3vw, 36px); }
+  .app-shell:not(.is-moving) .walk-intro { margin: 9px 0 14px; }
+  .app-shell:not(.is-moving) .walk-start-button { min-height: 132px; border-radius: 18px; }
+  .app-shell:not(.is-moving) .walk-start-button > span { font-size: 25px; }
+  .app-shell:not(.is-moving) .walk-privacy { margin-top: 10px; }
+}
 .map-error-detail { max-width: min(440px, calc(100% - 32px)); color: #59675d; font-size: 13px; font-weight: 500; line-height: 1.6; }
 .map-actions-toolbar > .button, .map-actions-toolbar .location-action, .map-actions-toolbar .map-sr-list-button { position: static; inset: auto; width: 100%; min-width: 0; min-height: 46px; justify-content: flex-start; padding: 0 11px; transform: none; box-shadow: none; white-space: nowrap; }
 .map-actions-toolbar .map-zoom-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding-top: 7px; border-top: 1px solid #e3e8e2; }
