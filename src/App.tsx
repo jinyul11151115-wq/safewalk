@@ -567,7 +567,8 @@ function App() {
           </div>
         </aside>
 
-        <div className={`map-workspace ${activeTab === 'report' || activeTab === 'safety' ? 'mini-map-workspace' : ''}`}>
+        <div className={`map-workspace ${activeTab === 'report' || activeTab === 'safety' ? 'mini-map-workspace' : ''} ${activeTab === 'report' && reportMapOpen ? 'report-location-map-open' : ''}`} role={activeTab === 'report' && reportMapOpen ? 'dialog' : undefined} aria-modal={activeTab === 'report' && reportMapOpen ? true : undefined} aria-label={activeTab === 'report' && reportMapOpen ? '제보 위치 선택 지도' : undefined} onKeyDown={(event) => { if (event.key === 'Escape' && reportMapOpen) setReportMapOpen(false) }}>
+          {activeTab === 'report' && reportMapOpen && <div className="report-location-map-toolbar"><div><strong>제보 위치 선택</strong><span>지도를 움직이거나 핀을 끌어 위치를 맞춰주세요.</span></div><Button variant="primary" aria-label="위치 표시 완료하고 제보로 돌아가기" onClick={() => setReportMapOpen(false)}><Check size={18} />위치 표시 완료</Button></div>}
           {activeTab === 'map' && <button
             type="button"
             className={`desktop-sidebar-toggle ${desktopSidebarCollapsed ? 'is-collapsed' : ''}`}
