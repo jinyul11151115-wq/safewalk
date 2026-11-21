@@ -463,7 +463,7 @@ function App() {
   return (
     <main className={`app-shell ${moving ? 'is-moving' : ''} ${textSize !== 'normal' ? `text-size-${textSize}` : ''} theme-${theme}`}>
       <header className="topbar">
-        <a className="brand" href="#home" aria-label="안심보행 지도 처음 화면">
+        <a className="brand" href="#walk" aria-label="안심보행 보행 모드로 이동" onClick={(event) => { event.preventDefault(); setActiveTab('walk') }}>
           <span className="brand-mark"><Footprints size={21} strokeWidth={2.5} /></span>
           <span className="brand-copy"><strong>안심보행</strong><small>SAFE WALK · 대전 시범 운영</small></span>
         </a>
