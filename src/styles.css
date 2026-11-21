@@ -363,3 +363,51 @@ summary { min-height: 48px; }
 }
 
 @media (min-width: 851px) { .report-map-resizer { display: none; } }
+
+@media (max-width: 850px) {
+  :root { font-size: clamp(15px, calc(14px + .26vw), 16px); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body, button, input, select, textarea { line-break: strict; word-break: keep-all; overflow-wrap: break-word; }
+  p, h1, h2, h3, label, legend, small, strong, span, button { text-wrap: pretty; }
+  .topbar { min-height: 60px; height: auto; flex-basis: auto; padding-block: 7px; }
+  .brand-copy strong { font-size: clamp(15px, calc(14px + .55vw), 17px); }
+  .brand-copy small { font-size: clamp(9px, calc(8px + .3vw), 10px); }
+  .pilot-badge { font-size: clamp(10px, calc(9px + .35vw), 12px); }
+  .app-tabs button { font-size: clamp(11px, calc(10px + .65vw), 14px); line-height: 1.2; white-space: normal; text-align: center; }
+  .report-side-panel, .safety-side-panel, .walk-side-panel { min-width: 0; }
+  .report-wizard, .wizard-step, .wizard-content, .wizard-topline, .wizard-actions { min-width: 0; }
+  .wizard-topline h1 { font-size: clamp(20px, calc(18px + 1.3vw), 25px); line-height: 1.3; }
+  .wizard-content > h2 { font-size: clamp(19px, calc(17px + 1.3vw), 23px); line-height: 1.4; }
+  .step-description, .report-login-copy { font-size: clamp(14px, calc(13px + .4vw), 16px); line-height: 1.65; }
+  .wizard-error, .photo-safety-note, .complete-description { font-size: clamp(13px, calc(12px + .35vw), 15px); line-height: 1.65; }
+  .button, .wizard-actions .button { min-width: 0; height: auto; min-height: 50px; padding: 8px clamp(8px, 2.8vw, 15px); font-size: clamp(13px, calc(12px + .4vw), 15px); line-height: 1.4; white-space: normal; text-align: center; }
+  .wizard-actions { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  .wizard-actions .button { gap: 5px; }
+  .demo-account, .report-subtabs button, .passability-choice, .severity-choice, .type-choice { min-width: 0; word-break: keep-all; }
+  .demo-account { max-width: 48%; height: auto; padding-block: 6px; line-height: 1.35; white-space: normal; }
+  .accuracy-card, .review-card > div, .severity-choice { min-width: 0; }
+  .accuracy-card > div, .review-card strong, .severity-choice small { min-width: 0; overflow-wrap: anywhere; }
+  .photo-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(7px, 2vw, 10px); }
+  .photo-picker { min-width: 0; }
+  .photo-picker strong, .photo-picker > span:not(.photo-picker-icon) { max-width: 100%; line-height: 1.45; word-break: keep-all; }
+  .type-choice { line-height: 1.4; }
+  .passability-group legend, .memo-label { font-size: clamp(13px, calc(12px + .35vw), 15px); }
+  .passability-group > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .passability-choice { height: auto; padding: 7px 3px; font-size: clamp(10px, calc(9px + .45vw), 13px); line-height: 1.3; white-space: normal; }
+  .report-login h1, .report-complete h2 { font-size: clamp(22px, calc(20px + 1.4vw), 29px); line-height: 1.4; }
+  .report-login-copy, .demo-auth-notice, .photo-safety-note, .demo-storage-note { word-break: keep-all; }
+  .walk-warning-card h2, .walk-question-sheet h2 { word-break: keep-all; line-height: 1.55; }
+  .hazard-copy > span { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.45; word-break: keep-all; }
+  .map-state, .map-state strong, .toast-message, .sheet-detail, .sheet-title-group h2 { word-break: keep-all; overflow-wrap: break-word; line-height: 1.55; }
+  .sheet-meta > div, .sheet-meta strong, .hazard-copy { min-width: 0; }
+  .sheet-meta strong { flex-wrap: wrap; word-break: keep-all; }
+}
+
+@media (max-width: 380px) {
+  .app-tabs { gap: 2px; }
+  .app-tabs button { gap: 4px; padding-inline: 3px; font-size: clamp(10px, 3.1vw, 12px); }
+  .report-side-panel { padding-inline: 12px !important; }
+  .wizard-actions { gap: 6px; }
+  .wizard-actions .button { padding-inline: 6px; font-size: 12px; }
+  .type-choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .severity-choice { grid-template-columns: 36px minmax(66px, .8fr) minmax(0, 1fr); gap: 5px; padding-inline: 6px; }
+}
